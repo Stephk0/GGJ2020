@@ -12,6 +12,7 @@ public class MaterialLevelProfile : ScriptableObject
     [Space(10)] 
     
     public int volume;
+    public int victoryCount;
     
     [FormerlySerializedAs("materialTypes")] public MaterialResource[] materialResourceTypes;
     public float[] objWeighting;

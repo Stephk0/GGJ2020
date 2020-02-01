@@ -29,6 +29,7 @@ public class Asteroid : MonoBehaviour, ISliceable
         Quaternion right  = Quaternion.Euler(0, angle, 0);
         AddForceToPiece(_leftPiece, (left * direction), hitPosition);
         AddForceToPiece(_rightPiece, (right * direction), hitPosition);
+        SpawnMaterials();
     }
 
     private void AddForceToPiece(Rigidbody piece, Vector3 direction, Vector3 hitPosition)
@@ -36,5 +37,10 @@ public class Asteroid : MonoBehaviour, ISliceable
         Debug.DrawLine(hitPosition, hitPosition + direction, Color.magenta, 2f);
         piece.isKinematic = false;
         piece.AddForce(direction * _force, ForceMode.Impulse);
+    }
+
+    private void SpawnMaterials()
+    {
+        var materialResource = GetComponent<MaterialResource>();
     }
 }
