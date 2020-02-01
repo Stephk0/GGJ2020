@@ -34,3 +34,9 @@ public class ShipModule : MonoBehaviour
         
     }
 }
+
+public enum ModuleType
+{
+    Generic,
+    Engine
+}
