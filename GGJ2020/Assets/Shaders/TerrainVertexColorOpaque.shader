@@ -72,7 +72,7 @@ Shader "GGJ19/VertexColorUnlit"
 
 				o.worldPos = mul(unity_ObjectToWorld, v.vertex);
 
-				o.uv = o.worldPos.xz / float2(_CloudScaleScroll.x, _CloudScaleScroll.y);
+				o.uv = o.worldPos.zx / float2(_CloudScaleScroll.x, _CloudScaleScroll.y);
 				o.uv += float2 (_Time.x * _CloudScaleScroll.z, _Time.x * _CloudScaleScroll.w);
 
 				o.uv2 = o.worldPos.xz / float2(_CloudScaleScroll.x * 0.5, _CloudScaleScroll.y) * 0.5;
@@ -97,7 +97,7 @@ Shader "GGJ19/VertexColorUnlit"
 				//col.a = 2;
 				col.rgb *= lerp(1, saturate(overlay + abs(1-i.normal.z)) , _CloudIntensity);
 				
-				fixed3 lighting = dot(i.normal, _LightDirection) * _LightColor;
+				fixed3 lighting = saturate(dot(i.normal, normalize(_LightDirection))) * _LightColor;
 				
 				col.rgb += lighting;
 				// apply fog
