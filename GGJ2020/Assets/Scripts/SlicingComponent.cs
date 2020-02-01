@@ -9,6 +9,7 @@ public class SlicingComponent : MonoBehaviour
     [SerializeField] private bool _debug;
 
     private List<RaycastHit> hits = new List<RaycastHit>();
+    private Vector3 startPosition;
     
     private void Start()
     {
@@ -18,6 +19,7 @@ public class SlicingComponent : MonoBehaviour
     
     private void FindObstacles()
     {
+        startPosition = _manager.transform.position;
         Vector3 dir = _manager.GetMovementDirection();
         float length = _manager.GetActionDistance();
 
@@ -45,7 +47,7 @@ public class SlicingComponent : MonoBehaviour
         foreach (var hit in hits) {
             ISliceable sliceable = hit.collider.gameObject.GetComponent<ISliceable>();
             if (sliceable != null) {
-                sliceable.OnSliced(_manager.transform.position, hit.point);
+                sliceable.OnSliced(startPosition, hit.point);
             }
 
             if (_debug) {

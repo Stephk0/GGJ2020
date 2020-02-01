@@ -327,4 +327,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _manager: {fileID: 2462646573397554909}
-  _debug: 1
+  _debug: 0
