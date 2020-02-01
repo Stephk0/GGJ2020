@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class shipManager : MonoBehaviour
+public class ShipManager : MonoBehaviour
 {
     [SerializeField] private InputComponent _input;
     [SerializeField] private MovementComponent _movement;
     [SerializeField] private FXComponent _FX;
 
-    [HideInInspector] public UnityEvent OnStartMovement;
-    [HideInInspector] public UnityEvent OnFinishMovement;
-    [HideInInspector] public UnityEvent OnShipMoving;
+    public UnityEvent OnShipStartMovement;
+    public UnityEvent OnShipFinishMovement;
+    public UnityEvent OnShipMoving;
+
+    public float BuildUpThreshHold = 0.13f;
 
     public Vector3 GetMovementDirection()
     {
@@ -26,6 +28,11 @@ public class shipManager : MonoBehaviour
     public float GetMovementPercent()
     {
         return _movement.MovementPercent;
+    }
+
+    public bool HasShipMovedBelowThreshold()
+    {
+        return _movement.MovementPercent < BuildUpThreshHold;
     }
 }
 

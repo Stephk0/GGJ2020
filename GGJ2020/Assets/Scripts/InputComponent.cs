@@ -6,15 +6,6 @@ public class InputComponent : MonoBehaviour
     [SerializeField] private Camera _camera;
     private Vector2 _clickDirection;
 
-    private void OnDrawGizmos()
-    {
-        if (_clickDirection.magnitude != 0)
-        {
-            Gizmos.DrawLine(this.transform.position,
-                (transform.position + Vector3.right * _clickDirection.x + Vector3.forward * _clickDirection.y) * 100);
-        }
-    }
-
     private void Update()
     {
         if (!Application.isMobilePlatform)

@@ -5,13 +5,14 @@ using UnityEngine;
 public class MovementComponent : MonoBehaviour
 {
     public float MovementDistance = 10;
-
-    [SerializeField] AnimationCurve interPolationCurve;
-    [SerializeField] private shipManager _manager;
-    [SerializeField] private float _duration = 0.5f;
     public float MovementPercent { get; private set; } = 0;
 
-    private Vector3 _initialScale = new Vector3(1, 1, 1);
+    [SerializeField] AnimationCurve interPolationCurve;
+    [SerializeField] Transform _shipMeshTransform;
+    [SerializeField] private ShipManager _manager;
+    [SerializeField] private float _duration = 0.5f;
+
+    private Vector3 _initialScale;
 
     private Coroutine _movementCoroutine = null;
 
@@ -19,12 +20,13 @@ public class MovementComponent : MonoBehaviour
 
     private void Start()
     {
-        _manager.OnFinishMovement.AddListener(() =>
+        _initialScale = this._shipMeshTransform.localScale;
+        _manager.OnShipFinishMovement.AddListener(() =>
         {
             IsMoving = false;
             MovementPercent = 0;
         });
-        _manager.OnStartMovement.AddListener(() => { IsMoving = true; });
+        _manager.OnShipStartMovement.AddListener(() => { IsMoving = true; });
     }
 
     private void Update()
@@ -45,21 +47,24 @@ public class MovementComponent : MonoBehaviour
     {
         Vector3 initialPos = this.transform.position;
 
-        this.transform.right = direction;
+        this.transform.forward = direction;
 
-        _manager.OnStartMovement.Invoke();
+        _manager.OnShipStartMovement.Invoke();
+        
         for (float t = 0; t <= _duration; t += Time.deltaTime)
         {
+            _manager.OnShipMoving.Invoke();
+            
             MovementPercent = (t / _duration);
-
             this.transform.position = Vector3.Lerp(initialPos, initialPos + GetDisplacementVector(direction),
                 interPolationCurve.Evaluate(MovementPercent));
 
-            if (MovementPercent < 0.13f)
-                this.transform.localScale = new Vector3(1f + 30f * interPolationCurve.Evaluate(MovementPercent), 1,
-                    1f - 10f * interPolationCurve.Evaluate(MovementPercent));
+            if (MovementPercent < _manager.BuildUpThreshHold)
+                this._shipMeshTransform.localScale = new Vector3(
+                    1f - 10f * interPolationCurve.Evaluate(MovementPercent), 1,
+                    1f + 30f * interPolationCurve.Evaluate(MovementPercent));
             else
-                this.transform.localScale = _initialScale;
+                this._shipMeshTransform.localScale = _initialScale;
 
             yield return new WaitForEndOfFrame();
         }
@@ -68,8 +73,9 @@ public class MovementComponent : MonoBehaviour
         this.transform.position = Vector3.Lerp(initialPos, initialPos + direction * MovementDistance,
             interPolationCurve.Evaluate(MovementPercent));
 
-        this.transform.localScale = _initialScale;
-        _manager.OnFinishMovement.Invoke();
+        this._shipMeshTransform.localScale = _initialScale;
+        
+        _manager.OnShipFinishMovement.Invoke();
     }
 
     public Vector3 GetDisplacementVector(Vector3 direction)
