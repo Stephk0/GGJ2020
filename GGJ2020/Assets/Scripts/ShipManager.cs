@@ -22,7 +22,7 @@ public class ShipManager : MonoBehaviour
 
     public Vector3 GetMovementDisplacementVector()
     {
-        return _movement.GetDisplacementVector(_input.GetClickDirection().ToXZPlane());
+        return _movement.GetTotalDisplacementVector(_input.GetClickDirection().ToXZPlane());
     }
 
     public float GetMovementPercent()

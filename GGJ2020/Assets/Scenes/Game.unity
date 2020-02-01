@@ -4119,52 +4119,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb6594bc54944b4aa133eff91bd5c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementDistance: 15
-  interPolationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.12457129
-      value: 0.036175013
-      inSlope: 0.52576166
-      outSlope: 0.52576166
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.35526437
-    - serializedVersion: 3
-      time: 0.14095047
-      value: 0.92537934
-      inSlope: 0.82906634
-      outSlope: 0.82906634
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.07662137
-    - serializedVersion: 3
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  TotalMovementDistance: 6
   _shipMeshTransform: {fileID: 462401754}
   _manager: {fileID: 1359383150}
-  _duration: 4
+  _phasesData:
+  - interPolationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.83872676
+        value: 0.32734385
+        inSlope: 1.670384
+        outSlope: 1.670384
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.22315376
+        outWeight: 0.43160665
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 7.216987
+        outSlope: 7.216987
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.10334418
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    interpolationDurationTime: 0.25
+    travelDistance: 0.5
+    interpolationPhase: 1
+  - interPolationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2.8372643
+        outSlope: 2.8372643
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.0979512
+      - serializedVersion: 3
+        time: 0.3564297
+        value: 0.7529192
+        inSlope: 1.140824
+        outSlope: 1.140824
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.0012207
+        value: 1
+        inSlope: 0.64514077
+        outSlope: 0.64514077
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.08504568
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    interpolationDurationTime: 0.05
+    travelDistance: 10
+    interpolationPhase: 2
+  - interPolationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    interpolationDurationTime: 0.3
+    travelDistance: 2
+    interpolationPhase: 3
 --- !u!114 &1359383150
 MonoBehaviour:
   m_ObjectHideFlags: 0
