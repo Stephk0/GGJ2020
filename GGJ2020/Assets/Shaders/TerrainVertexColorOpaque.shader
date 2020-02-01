@@ -13,6 +13,8 @@ Shader "GGJ19/VertexColorUnlit"
 		_BaseGradientSize("_BaseGradientSize",Float) = 1.0
 		_BaseGradientColor("BasgrdientColor", Color) = (1,1,1,1)
 		_Overexposure("Overexposure",Float) = 1.0
+		_LightDirection("LightDirection", Vector) = (1,1,0,0)
+		_LightColor("Lightcol", Color) = (1,1,1,1)
 	}
 	SubShader
 	{
@@ -56,8 +58,8 @@ Shader "GGJ19/VertexColorUnlit"
 			float4 _MainTex_ST;
 			float4 _CloudScaleScroll;
 			float _BaseGradientShift, _BaseGradientSize, _Overexposure;
-			fixed3 _BaseGradientColor;
-			
+			fixed3 _BaseGradientColor, _LightDirection;
+			fixed4  _LightColor;
 			v2f vert (appdata v)
 			{
 				v2f o;
@@ -94,6 +96,10 @@ Shader "GGJ19/VertexColorUnlit"
 
 				//col.a = 2;
 				col.rgb *= lerp(1, saturate(overlay + abs(1-i.normal.z)) , _CloudIntensity);
+				
+				fixed3 lighting = dot(i.normal, _LightDirection) * _LightColor;
+				
+				col.rgb += lighting;
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);
 				return col;

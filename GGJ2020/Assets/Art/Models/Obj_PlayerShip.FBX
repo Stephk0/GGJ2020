@@ -11,10 +11,10 @@ FBXHeaderExtension:  {
         Year: 2020
         Month: 2
         Day: 1
-        Hour: 13
-        Minute: 13
-        Second: 53
-        Millisecond: 711
+        Hour: 20
+        Minute: 25
+        Second: 37
+        Millisecond: 40
     }
     Creator: "FBX SDK/FBX Plugins version 2011.1"
 }
@@ -101,7 +101,7 @@ Objects:  {
             Property: "ScalingMaxY", "bool", "",0
             Property: "ScalingMaxZ", "bool", "",0
             Property: "GeometricTranslation", "Vector3D", "",0,0,0
-            Property: "GeometricRotation", "Vector3D", "",0,0,0
+            Property: "GeometricRotation", "Vector3D", "",-1.3660376680491e-005,8.6514228314627e-006,180
             Property: "GeometricScaling", "Vector3D", "",1,1,1
             Property: "MinDampRangeX", "double", "",0
             Property: "MinDampRangeY", "double", "",0
@@ -126,8 +126,8 @@ Objects:  {
             Property: "Freeze", "bool", "",0
             Property: "LODBox", "bool", "",0
             Property: "Lcl Translation", "Lcl Translation", "A+",0,0,0
-            Property: "Lcl Rotation", "Lcl Rotation", "A+",-90.0000025044781,-0,0
-            Property: "Lcl Scaling", "Lcl Scaling", "A+",1,1,1
+            Property: "Lcl Rotation", "Lcl Rotation", "A+",89.9999888441001,-0,-179.999991348578
+            Property: "Lcl Scaling", "Lcl Scaling", "A+",1.00000000000001,1.00000000000002,1.00000000000003
             Property: "Visibility", "Visibility", "A+",1
             Property: "MaxHandle", "int", "UH",8
             Property: "Color", "ColorRGB", "N",0.443137254901961,0.529411764705882,0.0235294117647059
@@ -618,14 +618,14 @@ Objects:  {
             Property: "Original|ApplicationVendor", "KString", "", "Autodesk"
             Property: "Original|ApplicationName", "KString", "", "3ds Max"
             Property: "Original|ApplicationVersion", "KString", "", "2011.1"
-            Property: "Original|DateTime_GMT", "DateTime", "", "01/02/2020 12:13:53.710"
+            Property: "Original|DateTime_GMT", "DateTime", "", "01/02/2020 19:25:37.040"
             Property: "Original|FileName", "KString", "", "E:\Work2016\GGJ2020\project\GGJ2020\GGJ2020\Assets\Art\Models\Obj_PlayerShip.FBX"
              
             Property: "LastSaved", "Compound", ""
             Property: "LastSaved|ApplicationVendor", "KString", "", "Autodesk"
             Property: "LastSaved|ApplicationName", "KString", "", "3ds Max"
             Property: "LastSaved|ApplicationVersion", "KString", "", "2011.1"
-            Property: "LastSaved|DateTime_GMT", "DateTime", "", "01/02/2020 12:13:53.710"
+            Property: "LastSaved|DateTime_GMT", "DateTime", "", "01/02/2020 19:25:37.040"
         }
     }
     Material: "Material::Obj_VertexColored", "" {

@@ -6,14 +6,18 @@ using UnityEngine.TestTools;
 
 public class FXComponent : MonoBehaviour
 {
-    [SerializeField] private shipManager _ship;
+    [SerializeField] private ShipManager _ship;
     [SerializeField] private LineRenderer _shipLineRenderer;
+
+    public ParticleSystem sucktionParticle;
+    public ParticleSystem leftoverParticle;
 
 
     private void Start()
     {
         //_ship.OnStartMovement.AddListener(DrawLine);
         //_ship.OnShipMoving.AddListener(UpdateLine);
+        _ship.OnShipStartMovement.AddListener(StartParticle);
     }
 
     public void DrawLine()
@@ -39,5 +43,13 @@ public class FXComponent : MonoBehaviour
         positions.Add(
             this.transform.position + _ship.GetMovementDisplacementVector() * (1 - _ship.GetMovementPercent()));
         return positions;
+    }
+
+    public void StartParticle()
+    {
+        //ParticleSystem.EmissionModule emissionModule = sucktionParticle.emission;
+        //emissionModule.enabled = true;
+        sucktionParticle.Play(true);
+        leftoverParticle.Play(true);
     }
 }
