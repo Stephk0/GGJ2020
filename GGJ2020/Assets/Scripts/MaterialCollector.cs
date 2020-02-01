@@ -16,7 +16,7 @@ public class MaterialCollector : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        var material = other.transform.GetComponent<Material>();
+        var material = other.transform.GetComponent<MaterialResource>();
         if (material != null)
         {
             CollidedMaterials.Add(other.gameObject);
