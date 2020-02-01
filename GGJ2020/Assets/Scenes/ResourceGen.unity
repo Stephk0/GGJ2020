@@ -3822,51 +3822,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb6594bc54944b4aa133eff91bd5c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementDistance: 15
-  interPolationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.12457129
-      value: 0.036175013
-      inSlope: 0.52576166
-      outSlope: 0.52576166
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.35526437
-    - serializedVersion: 3
-      time: 0.14095047
-      value: 0.92537934
-      inSlope: 0.82906634
-      outSlope: 0.82906634
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.07662137
-    - serializedVersion: 3
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  TotalMovementDistance: 10
+  _shipMeshTransform: {fileID: 0}
   _manager: {fileID: 1359383150}
-  _duration: 4
+  _phasesData: []
 --- !u!114 &1359383150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3881,16 +3840,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _input: {fileID: 1359383144}
   _movement: {fileID: 1359383149}
-  _FX: {fileID: 1359383151}
-  OnStartMovement:
+  _slicer: {fileID: 0}
+  _actionDistance: 0
+  OnShipStartMovement:
     m_PersistentCalls:
       m_Calls: []
-  OnFinishMovement:
+  OnShipFinishMovement:
     m_PersistentCalls:
       m_Calls: []
   OnShipMoving:
     m_PersistentCalls:
       m_Calls: []
+  BuildUpThreshHold: 0.13
 --- !u!114 &1359383151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5772,6 +5733,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1974300215046103166, guid: 81ff792e9bfc7f2439d1ce3cdbd37ef1,
+        type: 3}
+      propertyPath: levelProfiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974300215046103166, guid: 81ff792e9bfc7f2439d1ce3cdbd37ef1,
+        type: 3}
+      propertyPath: levelProfiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6900d0abb351e6b48921840a6e631969,
+        type: 2}
     - target: {fileID: 1974300215046103167, guid: 81ff792e9bfc7f2439d1ce3cdbd37ef1,
         type: 3}
       propertyPath: m_Name
