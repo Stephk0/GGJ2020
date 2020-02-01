@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 2926166636867515202, guid: 310079ea6ab474ca69fd8c54ffc317cb,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid_Type_0
+      value: Material_Type_0
       objectReference: {fileID: 0}
     - target: {fileID: 2926166636867515205, guid: 310079ea6ab474ca69fd8c54ffc317cb,
         type: 3}

@@ -5,9 +5,9 @@ using UnityEngine;
 public class MaterialResourcePlacer : MonoBehaviour
 {
     public bool useWeighting;
-    public MaterialLevelProfile[] levelProfiles;
+    public AsteroidLevelProfile[] levelProfiles;
     public Vector3[] WorldCorners => _worldCorners;
-    public List<MaterialResource> generatedResources;
+    public List<Asteroid> generatedResources;
     
     private float _depth;
     private Vector3[] _screenCorners;
@@ -29,7 +29,8 @@ public class MaterialResourcePlacer : MonoBehaviour
     {
         if (levelId < levelProfiles.Length){
             var materialProfile = levelProfiles[levelId];
-            GenerateResources(materialProfile);             DifficultyController.winValue = materialProfile.victoryCount;
+            GenerateResources(materialProfile);            
+            DifficultyController.winValue = materialProfile.victoryCount;
         }
         else{
             Debug.LogWarning($"Material profile for Level {levelId} is missing");
@@ -59,13 +60,13 @@ public class MaterialResourcePlacer : MonoBehaviour
         return worldCorners;
     }
 
-    private void GenerateResources(MaterialLevelProfile profile)
+    private void GenerateResources(AsteroidLevelProfile profile)
     {
-        generatedResources = new List<MaterialResource>();
+        generatedResources = new List<Asteroid>();
 
-        if (!useWeighting || profile.materialResourceTypes.Length < 2){
+        if (!useWeighting || profile.asteroidTypes.Length < 2){
             for (var i = 0; i < profile.volume; i++){
-                generatedResources.Add(SpawnResource(profile.materialResourceTypes[0], 1));
+                generatedResources.Add(SpawnResource(profile.asteroidTypes[0], 1));
             }
         }
         else{
@@ -73,16 +74,16 @@ public class MaterialResourcePlacer : MonoBehaviour
 
             for(int i = 0; i < volumes.Length; i++){
                 for (int j = 0; j < volumes[i]; j++){
-                    generatedResources.Add(SpawnResource(profile.materialResourceTypes[i], 1));
+                    generatedResources.Add(SpawnResource(profile.asteroidTypes[i], 1));
                 }
             }
         }
     }
 
-    private MaterialResource SpawnResource(MaterialResource source, int amount)
+    private Asteroid SpawnResource(Asteroid source, int amount)
     {
         var spawnPos = RandomSpawnPosition(_worldCorners);
-        var generated = Instantiate(source.gameObject, spawnPos, Quaternion.identity).GetComponent<MaterialResource>();
+        var generated = Instantiate(source.gameObject, spawnPos, Quaternion.identity).GetComponent<Asteroid>();
         generated.Amount = amount;
         
         return generated;

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "Resource_Profile_0", menuName = "Resources/Profile", order = 1)]
-public class MaterialLevelProfile : ScriptableObject
+[CreateAssetMenu(fileName = "Asteroid_Profile_0", menuName = "Resources/AsteroidProfile", order = 1)]
+public class AsteroidLevelProfile : ScriptableObject
 {
     public string name;
     public int level;
@@ -14,6 +14,6 @@ public class MaterialLevelProfile : ScriptableObject
     public int volume;
     public int victoryCount;
     
-    [FormerlySerializedAs("materialTypes")] public MaterialResource[] materialResourceTypes;
+    public Asteroid[] asteroidTypes;
     public float[] objWeighting;
 }
