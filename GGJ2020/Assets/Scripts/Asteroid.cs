@@ -2,8 +2,14 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+enum AsteroidType
+{
+    DestroyableAsteroid, UnbreakableAsteroid
+}
+
 public class Asteroid : MonoBehaviour, ISliceable
 {
+    [SerializeField] private AsteroidType type;
     [SerializeField] private Collider _collider;
     [SerializeField] private Rigidbody _leftPiece;
     [SerializeField] private Rigidbody _rightPiece;
@@ -43,4 +49,12 @@ public class Asteroid : MonoBehaviour, ISliceable
     {
         var materialResource = GetComponent<MaterialResource>();
     }
+    
+    public int Amount
+    {
+        get => _amount;
+        set => _amount = value;
+    }
+
+    private int _amount;
 }

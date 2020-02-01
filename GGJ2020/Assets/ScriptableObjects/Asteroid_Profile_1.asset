@@ -10,17 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e57ad78e6ca7d6478f6c7f30f90efcd, type: 3}
-  m_Name: Resource_Profile_0
+  m_Name: Asteroid_Profile_1
   m_EditorClassIdentifier: 
-  name: Full Test
-  level: -1
+  name: 
+  level: 1
   volume: 10
-  victoryCount: 1
-  materialResourceTypes:
-  - {fileID: 6554542239643996192, guid: 8e3bea71d82e97444b7e6a04a3608950, type: 3}
-  - {fileID: 6554542239643996192, guid: 1b8910b60565b9f44b7643aa9fc1db20, type: 3}
-  - {fileID: 6554542239643996192, guid: 197e2e5f4e2cfaf4586f1ba84ffe4720, type: 3}
+  victoryCount: 10
+  asteroidTypes:
+  - {fileID: 1893274326644299939, guid: 4e2a6a25c9570417684ec311659fb740, type: 3}
+  - {fileID: 1893274326644299939, guid: 051c08e12e3344cb1a359c4e4d89c7b7, type: 3}
   objWeighting:
-  - 0.5
   - 2
   - 1
