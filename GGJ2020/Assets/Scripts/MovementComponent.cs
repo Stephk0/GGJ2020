@@ -19,6 +19,11 @@ public class MovementComponent : MonoBehaviour
     public float MovementPercent { get; private set; } = 0;
     public float TotalCurveTime { get; private set; } = 0f;
 
+    public ShipMovementPhases MovementPhases
+    {
+        get => _movementPhases;
+    }
+
     [SerializeField] Transform _shipMeshTransform;
     [SerializeField] private ShipManager _manager;
 
@@ -47,13 +52,13 @@ public class MovementComponent : MonoBehaviour
     private void TryToMoveInPhases(Vector3 movementDirection)
     {
         if (!movementDirection.sqrMagnitude.Equals(0) &&
-            (this._movementPhases == ShipMovementPhases.Idle ||
-             this._movementPhases == ShipMovementPhases.Resting))
+            (this.MovementPhases == ShipMovementPhases.Idle ||
+             this.MovementPhases == ShipMovementPhases.Resting))
         {
             if (_movementCoroutine != null)
             {
                 StopAllCoroutines();
-                if (_movementPhases > 0)
+                if (MovementPhases > 0)
                 {
                     _manager.OnShipFinishMovement.Invoke();
                     this._shipMeshTransform.localScale = this._initialScale;
@@ -70,6 +75,7 @@ public class MovementComponent : MonoBehaviour
 
         _manager.OnShipStartMovement.Invoke();
 
+        MovementPercent = 0;
         foreach (var data in _phasesData)
         {
             if (data.InterpolationPhase == ShipMovementPhases.BuildUp)
@@ -113,7 +119,7 @@ public class MovementComponent : MonoBehaviour
         for (float dt = 0; dt <= routineDuration; dt += Time.deltaTime)
         {
             float percent = Mathf.Clamp01(dt / routineDuration);
-            MovementPercent += movementPercentStep * percent;
+
             _manager.OnShipMoving.Invoke();
             this.transform.position = Vector3.Lerp(initialPos, finalPosition, interpolationCurve.Evaluate(percent));
             yield return new WaitForEndOfFrame();
