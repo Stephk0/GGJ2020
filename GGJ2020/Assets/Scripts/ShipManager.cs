@@ -5,9 +5,12 @@ using UnityEngine.Events;
 
 public class ShipManager : MonoBehaviour
 {
+    [SerializeField] private AnimationCurve interpolationCurve;
     [SerializeField] private InputComponent _input;
     [SerializeField] private MovementComponent _movement;
     [SerializeField] private FXComponent _FX;
+    [SerializeField] private SlicingComponent _slicer;
+    [SerializeField] private float _actionDistance;
 
     public UnityEvent OnShipStartMovement;
     public UnityEvent OnShipFinishMovement;
@@ -28,6 +31,11 @@ public class ShipManager : MonoBehaviour
     public float GetMovementPercent()
     {
         return _movement.MovementPercent;
+    } 
+    
+    public float GetActionDistance()
+    {
+        return _actionDistance;
     }
 
     public bool HasShipMovedBelowThreshold()
