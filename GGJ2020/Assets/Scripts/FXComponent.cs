@@ -38,12 +38,14 @@ public class FXComponent : MonoBehaviour
 
     public List<Vector3> GetLinePositions()
     {
+        
         List<Vector3> positions = new List<Vector3>();
         positions.Add(this.transform.position);
-        positions.Add(
-            this.transform.position + _ship.GetMovementDisplacementVector() * (1 - _ship.GetMovementPercent()));
+        //positions.Add(this.transform.position + _ship.GetMovementDisplacementVector() * (1 - _ship.GetActionDistance()()));
         return positions;
+        
     }
+
 
     public void StartParticle()
     {
