@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Full Test
   level: -1
   volume: 10
+  victoryCount: 1
   materialResourceTypes:
   - {fileID: 6554542239643996192, guid: 8e3bea71d82e97444b7e6a04a3608950, type: 3}
   - {fileID: 6554542239643996192, guid: 1b8910b60565b9f44b7643aa9fc1db20, type: 3}

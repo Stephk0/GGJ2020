@@ -22,15 +22,14 @@ public class MaterialResourcePlacer : MonoBehaviour
     {
         _worldCorners = GetWorldBounds();
         
-        //Test only since not linked to game manager
-        SetupMaterialResources(0);
+        //Test only since not linked to game manager         SetupMaterialResources(DifficultyController.difficulty - 1);
     }
 
     public void SetupMaterialResources(int levelId)
     {
         if (levelId < levelProfiles.Length){
             var materialProfile = levelProfiles[levelId];
-            GenerateResources(materialProfile);
+            GenerateResources(materialProfile);             DifficultyController.winValue = materialProfile.victoryCount;
         }
         else{
             Debug.LogWarning($"Material profile for Level {levelId} is missing");
