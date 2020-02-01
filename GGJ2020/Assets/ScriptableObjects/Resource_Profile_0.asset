@@ -21,5 +21,5 @@ MonoBehaviour:
   - {fileID: 6554542239643996192, guid: 197e2e5f4e2cfaf4586f1ba84ffe4720, type: 3}
   objWeighting:
   - 0.5
-  - 0.5
-  - 0.5
+  - 2
+  - 1
