@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class MaterialResourcePlacer : MonoBehaviour
 {
@@ -24,15 +22,14 @@ public class MaterialResourcePlacer : MonoBehaviour
     {
         _worldCorners = GetWorldBounds();
         
-        //Test only since not linked to game manager
-        SetupMaterialResources(0);
+        //Test only since not linked to game manager         SetupMaterialResources(DifficultyController.difficulty - 1);
     }
 
     public void SetupMaterialResources(int levelId)
     {
         if (levelId < levelProfiles.Length){
             var materialProfile = levelProfiles[levelId];
-            GenerateResources(materialProfile);
+            GenerateResources(materialProfile);             DifficultyController.winValue = materialProfile.victoryCount;
         }
         else{
             Debug.LogWarning($"Material profile for Level {levelId} is missing");
@@ -41,8 +38,7 @@ public class MaterialResourcePlacer : MonoBehaviour
     
     public Vector3[] GetWorldBounds()
     {
-        var cam = Camera.main;
-        _depth = cam.transform.position.y;
+        _depth = Camera.main.transform.position.y;
             
         _screenCorners = new [] {new Vector3(0, 0, _depth), //bottom left
                             new Vector3(0, 1, _depth), //top lef
@@ -52,7 +48,7 @@ public class MaterialResourcePlacer : MonoBehaviour
         var worldCorners = new Vector3[_screenCorners.Length];
 
         for (var i = 0; i < _screenCorners.Length; i++){
-            var corner = cam.ViewportToWorldPoint(_screenCorners[i]);
+            var corner = Camera.main.ViewportToWorldPoint(_screenCorners[i]);
             corner.y = 0f;
             worldCorners[i] = corner;
             
@@ -67,22 +63,69 @@ public class MaterialResourcePlacer : MonoBehaviour
     {
         generatedResources = new List<MaterialResource>();
 
-        if (!useWeighting){
+        if (!useWeighting || profile.materialResourceTypes.Length < 2){
             for (var i = 0; i < profile.volume; i++){
-                var posX = UnityEngine.Random.Range(_worldCorners[0].x, _worldCorners[2].x);
-                var posZ = UnityEngine.Random.Range(_worldCorners[0].z, _worldCorners[2].z);
-                var spawnPos = new Vector3(posX, 0f, posZ);
-                
-                var source = profile.materialResourceTypes[0];
-                var generated = Instantiate(source.gameObject, spawnPos, Quaternion.identity).GetComponent<MaterialResource>();
-                
-                generated.Amount = 1;
-                generatedResources.Add(generated);
+                generatedResources.Add(SpawnResource(profile.materialResourceTypes[0], 1));
             }
         }
         else{
-            //TODO: calculate weighting distribution
-            return;
+            var volumes = VolumeWeighted(profile.volume, profile.objWeighting);
+
+            for(int i = 0; i < volumes.Length; i++){
+                for (int j = 0; j < volumes[i]; j++){
+                    generatedResources.Add(SpawnResource(profile.materialResourceTypes[i], 1));
+                }
+            }
         }
+    }
+
+    private MaterialResource SpawnResource(MaterialResource source, int amount)
+    {
+        var spawnPos = RandomSpawnPosition(_worldCorners);
+        var generated = Instantiate(source.gameObject, spawnPos, Quaternion.identity).GetComponent<MaterialResource>();
+        generated.Amount = amount;
+        
+        return generated;
+    }
+
+    private Vector3 RandomSpawnPosition(Vector3[] corners)
+    {
+        var posX = Random.Range(corners[0].x, corners[2].x);
+        var posZ = Random.Range(corners[0].z, corners[2].z);
+        return new Vector3(posX, 0f, posZ);
+    }
+
+    private int[] VolumeWeighted(int volume, float[] weights)
+    {
+        var remainingVolume = volume;
+
+        var volumeWeighted = new int[weights.Length];
+        var normalizedWeights = new float[weights.Length];
+        
+        var increment = 1f / weights.Sum();
+        var lowestWeightedIndex = 0;
+        var lowestWeight = 1f;
+
+        for (int i = 0; i < weights.Length; i++){
+            var weight = weights[i] * increment;
+
+            if (weight < lowestWeight){
+                lowestWeight = weight;
+                lowestWeightedIndex = i;
+            }
+            normalizedWeights[i] = weight;
+        }
+        
+        for (int i = 0; i < normalizedWeights.Length; i++){
+            if (i == lowestWeightedIndex) continue;
+            
+            var weightedVolume = (int)(normalizedWeights[i] * volume);
+            volumeWeighted[i] = weightedVolume;
+            remainingVolume -= weightedVolume;
+        }
+
+        volumeWeighted[lowestWeightedIndex] = remainingVolume;
+        
+        return volumeWeighted;
     }
 }

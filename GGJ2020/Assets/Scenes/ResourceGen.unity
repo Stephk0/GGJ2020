@@ -3864,8 +3864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda53f4bf0621704b960b5288a47d17e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ship: {fileID: 1359383150}
-  _shipLineRenderer: {fileID: 1359383152}
 --- !u!120 &1359383152
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5744,6 +5742,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6900d0abb351e6b48921840a6e631969,
         type: 2}
+    - target: {fileID: 1974300215046103166, guid: 81ff792e9bfc7f2439d1ce3cdbd37ef1,
+        type: 3}
+      propertyPath: useWeighting
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1974300215046103167, guid: 81ff792e9bfc7f2439d1ce3cdbd37ef1,
         type: 3}
       propertyPath: m_Name

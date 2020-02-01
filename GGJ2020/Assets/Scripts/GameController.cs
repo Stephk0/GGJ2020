@@ -2,43 +2,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public int levelNumber = 1;
+    public GameObject winScreen;
+    public GameObject loseScreen;
+    private bool haveWon = false;
 
     // Start is called before the first frame update
     void Start()
     {
         print("Start Game");
-        //Determine Level
-        loadLevel(levelNumber);
         //Initialise UI
-        //Spawn Ship
-
-
-        //Later or never
-        //Generate Obstacles
-        //Generate Dropoff
-    }
-
-    void loadLevel(int num)
-    {
-        print("Load Level " + num);
-
-        //spawnObstcles();
-        //spawnDropoff();
 
     }
 
-    void spawnObstacles()
+    void Update()
     {
-
+        if (DifficultyController.collectedMaterials >= DifficultyController.winValue)
+        {
+            if(haveWon == false)
+            {
+                haveWon = true;
+                DifficultyController.difficulty += 1;
+                levelWin();
+            }
+        }
     }
 
-    void spawnDropoff()
+    void levelWin()
     {
+        winScreen.SetActive(true);
+    }
 
+    void levelLoss()
+    {
+        loseScreen.SetActive(true);
     }
 
 }

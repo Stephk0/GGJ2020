@@ -8,6 +8,7 @@ public class MaterialCollector : MonoBehaviour
     [SerializeField] private SphereCollider _materialCollectorCollider;
 
     private List<GameObject> CollidedMaterials = new List<GameObject>();
+    private bool collected = false;
 
     public void Start()
     {
@@ -21,6 +22,7 @@ public class MaterialCollector : MonoBehaviour
         {
             CollidedMaterials.Add(other.gameObject);
             other.transform.gameObject.SetActive(false);
+            DifficultyController.collectedMaterials += 1;
         }
     }
 

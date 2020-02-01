@@ -77,7 +77,7 @@ Shader "GGJ19/VertexColorUnlit"
 
 				o.uv2 = o.worldPos.xz / float2(_CloudScaleScroll.x * 0.5, _CloudScaleScroll.y) * 0.5;
 				o.uv2 += float2 (_Time.x * _CloudScaleScroll.z * 0.5, _Time.x * _CloudScaleScroll.w * 0.5);
-				o.normal = v.normal;
+				o.normal = mul(unity_ObjectToWorld, v.normal);
 
 				//mul(_Object2World, v.vertex).xyz;
 				o.color.rgb = v.color.rgb;
