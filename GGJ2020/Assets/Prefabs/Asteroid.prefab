@@ -1353,7 +1353,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -1614,8 +1614,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.5
-          value: 0
+          time: 0.50198364
+          value: 0.09649658
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -14572,7 +14572,18 @@ MonoBehaviour:
   angle: 15
   OnSlice:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8296172668790678034}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1612493748652627724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24387,9 +24398,11 @@ MonoBehaviour:
   moveUnitsPerSecond:
     value: {x: 0, y: 0, z: 0}
     space: 1
+    randomizeStartup: 0
   rotateDegreesPerSecond:
     value: {x: 15, y: 15, z: 15}
     space: 0
+    randomizeStartup: 1
   ignoreTimescale: 0
 --- !u!1 &8433089190218381884
 GameObject:
