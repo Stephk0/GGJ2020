@@ -14565,11 +14565,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4e53ab1829b4a2d836eea54f707821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   _collider: {fileID: 2926166636867515207}
   _leftPiece: {fileID: 2926166637694989649}
   _rightPiece: {fileID: 2926166638992925488}
   _force: 25
   angle: 15
+  resourcePrefab: {fileID: 4121506115205267483, guid: 2fd1bc2b369fe5c49bfe2dd02f972567,
+    type: 3}
   OnSlice:
     m_PersistentCalls:
       m_Calls:

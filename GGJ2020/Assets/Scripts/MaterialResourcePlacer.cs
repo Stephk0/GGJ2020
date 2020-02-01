@@ -7,7 +7,7 @@ public class MaterialResourcePlacer : MonoBehaviour
     public bool useWeighting;
     public AsteroidLevelProfile[] levelProfiles;
     public Vector3[] WorldCorners => _worldCorners;
-    public List<Asteroid> generatedResources;
+    public List<Asteroid> generatedAsteroids;
     
     private float _depth;
     private Vector3[] _screenCorners;
@@ -62,11 +62,11 @@ public class MaterialResourcePlacer : MonoBehaviour
 
     private void GenerateResources(AsteroidLevelProfile profile)
     {
-        generatedResources = new List<Asteroid>();
+        generatedAsteroids = new List<Asteroid>();
 
         if (!useWeighting || profile.asteroidTypes.Length < 2){
             for (var i = 0; i < profile.volume; i++){
-                generatedResources.Add(SpawnResource(profile.asteroidTypes[0], 1));
+                generatedAsteroids.Add(SpawnAsteroid(profile.asteroidTypes[0], 3));
             }
         }
         else{
@@ -74,13 +74,13 @@ public class MaterialResourcePlacer : MonoBehaviour
 
             for(int i = 0; i < volumes.Length; i++){
                 for (int j = 0; j < volumes[i]; j++){
-                    generatedResources.Add(SpawnResource(profile.asteroidTypes[i], 1));
+                    generatedAsteroids.Add(SpawnAsteroid(profile.asteroidTypes[i], 3));
                 }
             }
         }
     }
 
-    private Asteroid SpawnResource(Asteroid source, int amount)
+    private Asteroid SpawnAsteroid(Asteroid source, int amount)
     {
         var spawnPos = RandomSpawnPosition(_worldCorners);
         var generated = Instantiate(source.gameObject, spawnPos, Quaternion.identity).GetComponent<Asteroid>();

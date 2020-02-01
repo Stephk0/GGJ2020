@@ -12,8 +12,6 @@ public enum MaterialResourceType
 public class MaterialResource : MonoBehaviour
 {
     [SerializeField] private MaterialResourceType materialResourceType;
-    [SerializeField] private Color _color;
-    [SerializeField] private MeshRenderer _mesh;
 
     public int Amount
     {
@@ -24,11 +22,6 @@ public class MaterialResource : MonoBehaviour
     private int _amount;
     
     private const float AbsorptionDuration = 1f;
-
-    public void Start()
-    {
-        _mesh.material.color = _color;
-    }
 
     public MaterialResourceType GetMaterialResourceType()
     {
