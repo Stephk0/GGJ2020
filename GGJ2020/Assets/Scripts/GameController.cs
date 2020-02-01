@@ -8,26 +8,28 @@ public class GameController : MonoBehaviour
 {
     public GameObject winScreen;
     public GameObject loseScreen;
-    private bool haveWon = false;
+    public ShipManager shipManager;
+    private bool haveWon;
 
     // Start is called before the first frame update
     void Start()
     {
-        print("Start Game");
-        //Initialise UI
+        Init();
+        Debug.Log("Start Game");
+    }
 
+    private void Init()
+    {
+        shipManager = FindObjectOfType<ShipManager>();
+        shipManager.health.IsDestroyed += levelLoss;
     }
 
     void Update()
     {
         if (DifficultyController.collectedMaterials >= DifficultyController.winValue)
         {
-            if(haveWon == false)
-            {
-                haveWon = true;
-                DifficultyController.difficulty += 1;
-                levelWin();
-            }
+            DifficultyController.difficulty += 1;
+            levelWin();
         }
     }
 

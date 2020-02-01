@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class ShipManager : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class ShipManager : MonoBehaviour
     [SerializeField] private MovementComponent _movement;
     [SerializeField] private SlicingComponent _slicer;
     [SerializeField] private float _actionDistance;
+    public HealthComponent health;
 
     public UnityEvent OnShipStartMovement;
     public UnityEvent OnShipFinishMovement;

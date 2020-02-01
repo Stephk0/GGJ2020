@@ -19245,6 +19245,7 @@ GameObject:
   - component: {fileID: 2462646573397554910}
   - component: {fileID: 2462646573397554882}
   - component: {fileID: 1189682247}
+  - component: {fileID: 831914518}
   m_Layer: 8
   m_Name: ShipContainer
   m_TagString: Ship
@@ -19301,6 +19302,7 @@ MonoBehaviour:
   _movement: {fileID: 2462646573397554910}
   _slicer: {fileID: 2462646573397554882}
   _actionDistance: 10
+  health: {fileID: 831914518}
   OnShipStartMovement:
     m_PersistentCalls:
       m_Calls: []
@@ -19469,6 +19471,22 @@ MonoBehaviour:
   _shipLineRenderer: {fileID: 0}
   sucktionParticle: {fileID: 1555632757}
   leftoverParticle: {fileID: 1800901143}
+--- !u!114 &831914518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2462646573397554900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0125a40ddc65144861d77094ec352d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthDecrease: 4
+  timeToDecrease: 0.5
+  decreaseHealth: 1
 --- !u!1 &3231109912423511987
 GameObject:
   m_ObjectHideFlags: 0
@@ -19591,7 +19609,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7892995304450600490
 MonoBehaviour:
