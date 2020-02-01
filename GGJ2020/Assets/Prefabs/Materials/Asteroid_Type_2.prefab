@@ -27,10 +27,30 @@ PrefabInstance:
       propertyPath: _materialType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -1716998985370010677, guid: 310079ea6ab474ca69fd8c54ffc317cb,
+        type: 3}
+      propertyPath: _color.r
+      value: 0.7169812
+      objectReference: {fileID: 0}
+    - target: {fileID: -1716998985370010677, guid: 310079ea6ab474ca69fd8c54ffc317cb,
+        type: 3}
+      propertyPath: _color.g
+      value: 0.7169812
+      objectReference: {fileID: 0}
+    - target: {fileID: -1716998985370010677, guid: 310079ea6ab474ca69fd8c54ffc317cb,
+        type: 3}
+      propertyPath: _color.b
+      value: 0.7169812
+      objectReference: {fileID: 0}
+    - target: {fileID: -1716998985370010677, guid: 310079ea6ab474ca69fd8c54ffc317cb,
+        type: 3}
+      propertyPath: materialResourceType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2926166636867515202, guid: 310079ea6ab474ca69fd8c54ffc317cb,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid_2
+      value: Asteroid_Type_2
       objectReference: {fileID: 0}
     - target: {fileID: 2926166636867515205, guid: 310079ea6ab474ca69fd8c54ffc317cb,
         type: 3}
