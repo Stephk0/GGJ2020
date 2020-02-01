@@ -1,4 +1,4 @@
 ﻿public class Layers
 {
-    public static string SHIP_LAYER = "Ship";
+    public static string NON_OBSTACLE_LAYER = "NonObstacle";
 }

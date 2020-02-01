@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class shipManager : MonoBehaviour
+public class ShipManager : MonoBehaviour
 {
     [SerializeField] private AnimationCurve interpolationCurve;
     [SerializeField] private InputComponent _input;
@@ -12,9 +12,11 @@ public class shipManager : MonoBehaviour
     [SerializeField] private SlicingComponent _slicer;
     [SerializeField] private float _actionDistance;
 
-    [HideInInspector] public UnityEvent OnStartMovement;
-    [HideInInspector] public UnityEvent OnFinishMovement;
-    [HideInInspector] public UnityEvent OnShipMoving;
+    public UnityEvent OnShipStartMovement;
+    public UnityEvent OnShipFinishMovement;
+    public UnityEvent OnShipMoving;
+
+    public float BuildUpThreshHold = 0.13f;
 
     public Vector3 GetMovementDirection()
     {
@@ -34,6 +36,11 @@ public class shipManager : MonoBehaviour
     public float GetActionDistance()
     {
         return _actionDistance;
+    }
+
+    public bool HasShipMovedBelowThreshold()
+    {
+        return _movement.MovementPercent < BuildUpThreshHold;
     }
 }
 

@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 
 public class FXComponent : MonoBehaviour
 {
-    [SerializeField] private shipManager _ship;
+    [SerializeField] private ShipManager _ship;
     [SerializeField] private LineRenderer _shipLineRenderer;
 
 
