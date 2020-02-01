@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MovementComponent : MonoBehaviour
 {
-    public float MovementDistance = 10;
-
     [SerializeField] AnimationCurve interPolationCurve;
     [SerializeField] private shipManager _manager;
     [SerializeField] private float _duration = 0.5f;
@@ -30,7 +28,7 @@ public class MovementComponent : MonoBehaviour
     private void Update()
     {
         Vector3 movementDirection = _manager.GetMovementDirection();
-        if (!movementDirection.sqrMagnitude.Equals(0))
+        if (!movementDirection.sqrMagnitude.Equals(0) && !IsMoving)
         {
             if (_movementCoroutine != null)
             {
@@ -55,9 +53,10 @@ public class MovementComponent : MonoBehaviour
             this.transform.position = Vector3.Lerp(initialPos, initialPos + GetDisplacementVector(direction),
                 interPolationCurve.Evaluate(MovementPercent));
 
-            if (MovementPercent < 0.13f)
+            if (MovementPercent < 0.13f) {
                 this.transform.localScale = new Vector3(1f + 30f * interPolationCurve.Evaluate(MovementPercent), 1,
                     1f - 10f * interPolationCurve.Evaluate(MovementPercent));
+            }
             else
                 this.transform.localScale = _initialScale;
 
@@ -65,7 +64,7 @@ public class MovementComponent : MonoBehaviour
         }
 
         MovementPercent = 1;
-        this.transform.position = Vector3.Lerp(initialPos, initialPos + direction * MovementDistance,
+        this.transform.position = Vector3.Lerp(initialPos, initialPos + direction * _manager.GetActionDistance(),
             interPolationCurve.Evaluate(MovementPercent));
 
         this.transform.localScale = _initialScale;
@@ -74,6 +73,6 @@ public class MovementComponent : MonoBehaviour
 
     public Vector3 GetDisplacementVector(Vector3 direction)
     {
-        return (direction * MovementDistance);
+        return (direction * _manager.GetActionDistance());
     }
 }
