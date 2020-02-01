@@ -19238,7 +19238,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -19936,7 +19936,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0.31
     randomPositionAmount: 0.21
     radius:
-      value: 0.7
+      value: 0.24
       mode: 0
       spread: 0
       speed:
@@ -29036,7 +29036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliceEffect: {fileID: 578975788479866676}
-  hideGraphic: {fileID: 0}
+  hideGraphic: {fileID: 1600651443064718045}
 --- !u!1 &4495613465587787254
 GameObject:
   m_ObjectHideFlags: 0
@@ -38845,6 +38845,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 312412640ad679c40957fca5dc40c46b, type: 3}
+--- !u!1 &1600651443064718045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 312412640ad679c40957fca5dc40c46b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7284366890319322068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2336789696765505742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 312412640ad679c40957fca5dc40c46b,
