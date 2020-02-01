@@ -7,56 +7,30 @@ public class Asteroid : MonoBehaviour, ISliceable
     [SerializeField] private Rigidbody _leftPiece;
     [SerializeField] private Rigidbody _rightPiece;
     [SerializeField] private float _force;
+    [SerializeField] private float angle = 15;
 
     private bool isSliced;
-    
-    /*private Vector3 enterPosition;
-    private float enterTime;
-    private Vector3 exitPosition;
 
-    private void OnCollisionEnter(Collision other)
-    {
-        enterPosition = other.transform.position;
-        enterTime = Time.time;
-    }
-
-    private void OnCollisionExit(Collision other)
-    {
-        exitPosition = other.transform.position;
-        Slice();
-    }
-
-    private void Slice()
+    public void OnSliced(Vector3 startPosition, Vector3 hitPosition)
     {
         if (isSliced) {
             return;
         }
         
         isSliced = true;
-        Vector3 direction = exitPosition - enterPosition;
-        direction.Normalize();
-    
-        AddForceToPiece(_leftPiece, direction * _force);
-        AddForceToPiece(_rightPiece, direction * _force);
-    } */
-    
-    public void OnSliced(Vector3 entry, Vector3 exit)
-    {
-        if (isSliced) {
-            return;
-        }
-        
-        isSliced = true;
-        Vector3 direction = exit - entry;
+        Vector3 direction = hitPosition - startPosition;
         direction.Normalize();
         
-        AddForceToPiece(_leftPiece, direction * _force);
-        AddForceToPiece(_rightPiece, direction * _force);
+        Quaternion left = Quaternion.Euler(0, -angle, 0);
+        Quaternion right  = Quaternion.Euler(0, angle, 0);
+        AddForceToPiece(_leftPiece, (left * direction), hitPosition);
+        AddForceToPiece(_rightPiece, (right * direction), hitPosition);
     }
 
-    private void AddForceToPiece(Rigidbody piece, Vector3 force)
+    private void AddForceToPiece(Rigidbody piece, Vector3 direction, Vector3 hitPosition)
     {
+        Debug.DrawLine(hitPosition, hitPosition + direction, Color.magenta, 2f);
         piece.isKinematic = false;
-        piece.AddForce(force);
+        piece.AddForce(direction * _force, ForceMode.Impulse);
     }
 }

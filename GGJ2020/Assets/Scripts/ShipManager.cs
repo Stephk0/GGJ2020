@@ -5,10 +5,8 @@ using UnityEngine.Events;
 
 public class ShipManager : MonoBehaviour
 {
-    [SerializeField] private AnimationCurve interpolationCurve;
     [SerializeField] private InputComponent _input;
     [SerializeField] private MovementComponent _movement;
-    [SerializeField] private FXComponent _FX;
     [SerializeField] private SlicingComponent _slicer;
     [SerializeField] private float _actionDistance;
 
@@ -25,22 +23,18 @@ public class ShipManager : MonoBehaviour
 
     public Vector3 GetMovementDisplacementVector()
     {
-        return _movement.GetDisplacementVector(_input.GetClickDirection().ToXZPlane());
+        return _movement.GetTotalDisplacementVector(_input.GetClickDirection().ToXZPlane());
     }
 
-    public float GetMovementPercent()
-    {
-        return _movement.MovementPercent;
-    } 
-    
+
     public float GetActionDistance()
     {
         return _actionDistance;
     }
 
-    public bool HasShipMovedBelowThreshold()
+    public bool IsShipInBuildUp()
     {
-        return _movement.MovementPercent < BuildUpThreshHold;
+        return _movement.MovementPhases == ShipMovementPhases.BuildUp;
     }
 }
 

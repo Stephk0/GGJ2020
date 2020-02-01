@@ -128,7 +128,8 @@ MonoBehaviour:
   _collider: {fileID: 2926166636867515207}
   _leftPiece: {fileID: 2926166637694989649}
   _rightPiece: {fileID: 2926166638992925488}
-  _force: 10
+  _force: 25
+  angle: 15
 --- !u!1 &2926166637694989647
 GameObject:
   m_ObjectHideFlags: 0

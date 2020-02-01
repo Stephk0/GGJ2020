@@ -4,6 +4,6 @@ namespace DefaultNamespace
 {
     public interface ISliceable
     {
-        void OnSliced(Vector3 entry, Vector3 exit);
+        void OnSliced(Vector3 startPosition, Vector3 hitPosition);
     }
 }
