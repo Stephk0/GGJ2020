@@ -40,7 +40,7 @@ public class FXSlice : MonoBehaviour
     // Update is called once per frame
     void PlaySliceEffect()
     {
-        Vector3 dir =ship.transform.position -  transform.position ;
+        Vector3 dir = ship.transform.position -  transform.position ;
         sliceEffect.transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
         sliceEffect.Play(true);
         hideGraphic.SetActive(false);
