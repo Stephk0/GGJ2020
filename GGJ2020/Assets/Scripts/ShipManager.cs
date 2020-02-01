@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -19,6 +21,11 @@ public class ShipManager : MonoBehaviour
 
     public float BuildUpThreshHold = 0.13f;
 
+    private void Start()
+    {
+        OnShipStartMovement.AddListener(Shake);
+    }
+
     public Vector3 GetMovementDirection()
     {
         return _input.GetClickDirection().ToXZPlane();
@@ -28,8 +35,7 @@ public class ShipManager : MonoBehaviour
     {
         return _movement.GetTotalDisplacementVector(_input.GetClickDirection().ToXZPlane());
     }
-
-
+    
     public float GetActionDistance()
     {
         return _actionDistance;
@@ -38,6 +44,11 @@ public class ShipManager : MonoBehaviour
     public bool IsShipInBuildUp()
     {
         return _movement.MovementPhases == ShipMovementPhases.BuildUp;
+    }
+    
+    private void Shake()
+    {
+        Camera.main.DOShakePosition(0.2f, 0.7f);
     }
 }
 
