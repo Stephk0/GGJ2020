@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = System.Random;
 
 namespace UnityStandardAssets.Utility
 {
@@ -9,11 +10,13 @@ namespace UnityStandardAssets.Utility
         public Vector3andSpace rotateDegreesPerSecond;
         public bool ignoreTimescale;
         private float m_LastRealTime;
+        
 
 
         private void Start()
         {
             m_LastRealTime = Time.realtimeSinceStartup;
+            if (rotateDegreesPerSecond.randomizeStartup) transform.rotation = Quaternion.Euler(UnityEngine.Random.value * 360f * Vector3.one);
         }
 
 
@@ -28,6 +31,7 @@ namespace UnityStandardAssets.Utility
             }
             transform.Translate(moveUnitsPerSecond.value*deltaTime, moveUnitsPerSecond.space);
             transform.Rotate(rotateDegreesPerSecond.value*deltaTime, moveUnitsPerSecond.space);
+           
         }
 
 
@@ -36,6 +40,7 @@ namespace UnityStandardAssets.Utility
         {
             public Vector3 value;
             public Space space = Space.Self;
+            public bool randomizeStartup;
         }
     }
 }
