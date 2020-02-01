@@ -23,22 +23,21 @@ public class SlicingComponent : MonoBehaviour
         Vector3 dir = _manager.GetMovementDirection();
         float length = _manager.GetActionDistance();
 
-        var ray = new Ray(_manager.transform.position, dir * length);
-        var oppositeRay = new Ray(_manager.transform.position + dir * length, - dir * length);
+        var ray = new Ray(startPosition, dir);
+        var oppositeRay = new Ray(startPosition + dir, - dir);
         
         int ignoreLayerMask = 1 << LayerMask.GetMask(Layers.NON_OBSTACLE_LAYER);
         
         hits = new List<RaycastHit>(Physics.RaycastAll(ray, length, ignoreLayerMask));
-        // do we need the exit points?
-        hits.AddRange(Physics.RaycastAll(oppositeRay, length, ignoreLayerMask));
+        //hits.AddRange(Physics.RaycastAll(oppositeRay, length, ignoreLayerMask));
 
         hits.OrderBy(
             hit => Vector3.Distance(_manager.transform.position, hit.point)
         );
 
         if (_debug) {
-            Debug.DrawLine(oppositeRay.origin, oppositeRay.direction, Color.yellow);
-            Debug.DrawLine(ray.origin, ray.direction, Color.red);
+            Debug.DrawRay(ray.origin, ray.direction * length, Color.red, 1f);
+           // Debug.DrawRay(oppositeRay.origin + oppositeRay.direction * length, -oppositeRay.direction, Color.yellow, 1f);
         }
     }
 
