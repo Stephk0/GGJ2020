@@ -27,7 +27,6 @@ public class MaterialResource : MonoBehaviour
 
     public void Start()
     {
-        _mesh = GetComponent<MeshRenderer>();
         _mesh.material.color = _color;
     }
 

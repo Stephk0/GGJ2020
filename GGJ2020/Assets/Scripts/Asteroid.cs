@@ -1,5 +1,6 @@
 ﻿using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Asteroid : MonoBehaviour, ISliceable
 {
@@ -9,6 +10,8 @@ public class Asteroid : MonoBehaviour, ISliceable
     [SerializeField] private float _force;
     [SerializeField] private float angle = 15;
 
+    public UnityEvent OnSlice;
+    
     private bool isSliced;
 
     public void OnSliced(Vector3 startPosition, Vector3 hitPosition)
@@ -17,6 +20,7 @@ public class Asteroid : MonoBehaviour, ISliceable
             return;
         }
         
+        OnSlice.Invoke();
         isSliced = true;
         Vector3 direction = hitPosition - startPosition;
         direction.Normalize();
