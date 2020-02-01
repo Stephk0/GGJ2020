@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e57ad78e6ca7d6478f6c7f30f90efcd, type: 3}
+  m_Name: Resource_Profile_0
+  m_EditorClassIdentifier: 
+  name: Full Test
+  level: -1
+  volume: 10
+  materialTypes:
+  - {fileID: -7904103407198441912, guid: 310079ea6ab474ca69fd8c54ffc317cb, type: 3}
+  - {fileID: -7904103407198441912, guid: 06621877939cbdd409b3ed066f7cc456, type: 3}
+  - {fileID: -7904103407198441912, guid: 25be07a7280084b4eae19ad4614f9443, type: 3}
+  objWeighting:
+  - 0.5
+  - 0.5
+  - 0.5
