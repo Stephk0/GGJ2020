@@ -26,6 +26,6 @@ public class MaterialCollector : MonoBehaviour
 
     public void TryDisableSelf()
     {
-        this._materialCollectorCollider.enabled = _manager.HasShipMovedBelowThreshold();
+        this._materialCollectorCollider.enabled = _manager.IsShipInBuildUp();
     }
 }
