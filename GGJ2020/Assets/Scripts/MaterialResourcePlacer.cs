@@ -5,7 +5,7 @@ using UnityEngine;
 public class MaterialResourcePlacer : MonoBehaviour
 {
     public bool useWeighting;
-    public AsteroidLevelProfile[] levelProfiles;
+//    public AsteroidLevelProfile[] levelProfiles;
     public Vector3[] WorldCorners => _worldCorners;
     public List<Asteroid> generatedAsteroids;
     
@@ -13,28 +13,29 @@ public class MaterialResourcePlacer : MonoBehaviour
     private Vector3[] _screenCorners;
     private Vector3[] _worldCorners;
     
-    void Start()
-    {
-        Init();
-    }
+//    void Start()
+//    {
+//        Init();
+//    }
 
-    private void Init()
-    {
-        _worldCorners = GetWorldBounds();
-        
-        //Test only since not linked to game manager         SetupMaterialResources(DifficultyController.difficulty - 1);
-    }
+//    private void Init()
+//    {
+////        _worldCorners = GetWorldBounds();
+//        
+//        //Test only since not linked to game manager ////        SetupMaterialResources(DifficultyController.difficulty - 1);
+//    }
 
-    public void SetupMaterialResources(int levelId)
+    public void SetupMaterialResources(AsteroidLevelProfile profile)
     {
-        if (levelId < levelProfiles.Length){
-            var materialProfile = levelProfiles[levelId];
-            GenerateResources(materialProfile);            
-            DifficultyController.winValue = materialProfile.victoryCount;
-        }
-        else{
-            Debug.LogWarning($"Material profile for Level {levelId} is missing");
-        }
+//        if (levelId < levelProfiles.Length){
+//            var materialProfile = levelProfiles[levelId];
+            _worldCorners = GetWorldBounds();
+            GenerateResources(profile);            
+            DifficultyController.winValue = profile.victoryCount;
+//        }
+//        else{
+//            Debug.LogWarning($"Material profile for Level {levelId} is missing");
+//        }
     }
     
     public Vector3[] GetWorldBounds()

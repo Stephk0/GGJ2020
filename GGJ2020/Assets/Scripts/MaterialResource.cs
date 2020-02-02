@@ -12,7 +12,7 @@ public enum MaterialResourceType
 public class MaterialResource : MonoBehaviour
 {
     [SerializeField] private MaterialResourceType materialResourceType;
-
+    
     public int Amount
     {
         get => _amount;

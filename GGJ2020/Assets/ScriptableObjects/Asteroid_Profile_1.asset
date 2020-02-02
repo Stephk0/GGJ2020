@@ -16,6 +16,9 @@ MonoBehaviour:
   level: 1
   volume: 10
   victoryCount: 10
+  initialHealth: 100
+  healthDecreasePerTick: 4
+  healthDecreaseTickTime: 1
   asteroidTypes:
   - {fileID: 1893274326644299939, guid: 4e2a6a25c9570417684ec311659fb740, type: 3}
   - {fileID: 1893274326644299939, guid: 051c08e12e3344cb1a359c4e4d89c7b7, type: 3}
