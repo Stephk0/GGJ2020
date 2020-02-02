@@ -13,7 +13,8 @@ public class MaterialResourcePlacer : MonoBehaviour
     private float _depth;
     private Vector3[] _screenCorners;
     private Vector3[] _worldCorners;
-    
+    private int materialPerAsteroid = 2;
+
 //    void Start()
 //    {
 //        Init();
@@ -68,7 +69,7 @@ public class MaterialResourcePlacer : MonoBehaviour
 
         if (!useWeighting || profile.asteroidTypes.Length < 2){
             for (var i = 0; i < profile.volume; i++){
-                generatedAsteroids.Add(SpawnAsteroid(profile.asteroidTypes[0], 3));
+                generatedAsteroids.Add(SpawnAsteroid(profile.asteroidTypes[0], materialPerAsteroid));
             }
         }
         else{
@@ -76,7 +77,7 @@ public class MaterialResourcePlacer : MonoBehaviour
 
             for(int i = 0; i < volumes.Length; i++){
                 for (int j = 0; j < volumes[i]; j++){
-                    generatedAsteroids.Add(SpawnAsteroid(profile.asteroidTypes[i], 3));
+                    generatedAsteroids.Add(SpawnAsteroid(profile.asteroidTypes[i], materialPerAsteroid));
                 }
             }
         }
