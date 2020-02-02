@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 4
   level: 4
-  volume: 7
-  victoryCount: 9
+  volume: 9
+  victoryCount: 8
   initialHealth: 114
   healthDecreasePerTick: 9
   healthDecreaseTickTime: 1
@@ -23,5 +23,5 @@ MonoBehaviour:
   - {fileID: 1893274326644299939, guid: 4e2a6a25c9570417684ec311659fb740, type: 3}
   - {fileID: 1893274326644299939, guid: 051c08e12e3344cb1a359c4e4d89c7b7, type: 3}
   objWeighting:
-  - 5
-  - 2
+  - 4
+  - 3

@@ -19302,7 +19302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _input: {fileID: 2462646573397554907}
   _movement: {fileID: 2462646573397554910}
-  _actionDistance: 20
+  _actionDistance: 15
   health: {fileID: 831914518}
   collector: {fileID: 7892995304450600490}
   FX: {fileID: 1189682247}
@@ -19418,7 +19418,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     interpolationDurationTime: 0.05
-    travelDistance: 20
+    travelDistance: 15
     interpolationPhase: 2
   - interPolationCurve:
       serializedVersion: 2
