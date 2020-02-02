@@ -15,16 +15,17 @@ public class HealthComponent : MonoBehaviour
 
     void Update()
     {
-        if (decreaseHealth){
+        if (decreaseHealth)
+        {
             Timers();
         }
     }
-    
+
     public void Decrease(int amount)
     {
         health -= amount;
-        
-        if(IsDeathReady())
+
+        if (IsDeathReady())
             DestroyShip();
     }
 
@@ -32,9 +33,9 @@ public class HealthComponent : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
-        if (!(currentTime > timeToDecrease)) 
+        if (!(currentTime > timeToDecrease))
             return;
-        
+
         currentTime = 0f;
         Decrease(healthDecrease);
     }
@@ -48,6 +49,6 @@ public class HealthComponent : MonoBehaviour
     private void DestroyShip()
     {
         IsDestroyed?.Invoke();
-        Debug.Log("Ship Destroyed");
+        //Debug.Log("Ship Destroyed");
     }
 }

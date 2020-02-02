@@ -150,15 +150,4 @@ public static class CameraExtensions
 
         return worldCorners;
     }
-
-    public static bool IsPointInVisible(this Camera cam, Vector3 worldPoint)
-    {
-        var viewpoint = cam.WorldToScreenPoint(worldPoint);
-
-        bool outside = viewpoint.x > Screen.width ||
-                       viewpoint.x < 0 ||
-                       viewpoint.y > Screen.height ||
-                       viewpoint.y < 0;
-        return outside;
-    }
 }

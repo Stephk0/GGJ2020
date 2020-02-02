@@ -27,6 +27,7 @@ public class MovementComponent : MonoBehaviour
 
     [SerializeField] Transform _shipMeshTransform;
     [SerializeField] private ShipManager _manager;
+    [SerializeField] private PlaceSpaceLimits _spaceLimits;
     [SerializeField] private LayerMask _shipRouteCollision;
     [SerializeField] private List<MovementPhaseData> _phasesData;
 
@@ -119,7 +120,7 @@ public class MovementComponent : MonoBehaviour
         AnimationCurve interpolationCurve = movementData.InterPolationCurve;
         List<Vector3> Route = new List<Vector3>();
 
-        if (Camera.main.IsPointInVisible(finalPosition))
+        if (_spaceLimits.IsPointInVisible(finalPosition))
         {
             Route = PlanRoute(initialPos, finalPosition);
         }
@@ -133,7 +134,8 @@ public class MovementComponent : MonoBehaviour
             var percent = Mathf.Clamp01(dt / routineDuration);
 
             _manager.OnShipMoving.Invoke();
-            this.transform.position = GetPointInRoute(percent, initialPos, Route, interpolationCurve);
+            this.transform.position =
+                this._spaceLimits.ClampToBoundsXZ(GetPointInRoute(percent, initialPos, Route, interpolationCurve), 1);
 
             yield return new WaitForEndOfFrame();
         }
@@ -147,7 +149,8 @@ public class MovementComponent : MonoBehaviour
         {
             Vector3 currentTarget = path[i];
 
-            Debug.DrawLine(ini, currentTarget, i == 0 ? Color.magenta : i == 1 ? Color.red : Color.cyan, 3);
+
+            //Debug.DrawLine(ini, currentTarget, i == 0 ? Color.magenta : i == 1 ? Color.red : Color.cyan, 3);
             ini = currentTarget;
         }
 
@@ -171,6 +174,7 @@ public class MovementComponent : MonoBehaviour
 
             initial = currentTarget;
         }
+
 
         return Vector3.Lerp(initial, path.Last(), animation.Evaluate(1));
     }
@@ -199,12 +203,11 @@ public class MovementComponent : MonoBehaviour
                 hitPoints.Add(hit.point);
                 totalDistance -= hit.distance;
 
-
-                // Debug.DrawLine(r.origin, hit.point, Color.red, 10);
                 r = new Ray(hit.point - reflected * 0.1f, reflected);
             }
             else
             {
+                if (hitPoints.Count == 0) hitPoints.Add(final);
                 Debug.Log(i);
                 break;
             }
