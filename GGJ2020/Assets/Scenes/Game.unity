@@ -175,7 +175,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 500
   field of view: 15
   orthographic: 0
   orthographic size: 20
@@ -187,8 +187,8 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
+  m_HDR: 0
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -848,27 +848,42 @@ PrefabInstance:
     - target: {fileID: 8626479118165662497, guid: 386cef83d6a94df4791f1c0d98743ded,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.506935
+      value: -12.50694
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626479118165662497, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8626479118709925659, guid: 386cef83d6a94df4791f1c0d98743ded,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.625801
+      value: 17.625793
       objectReference: {fileID: 0}
     - target: {fileID: 8626479118709925659, guid: 386cef83d6a94df4791f1c0d98743ded,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.000008583069
+      value: -0.000009059906
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626479118709925659, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8626479119140862404, guid: 386cef83d6a94df4791f1c0d98743ded,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 62.063828
+      value: 62.063835
       objectReference: {fileID: 0}
     - target: {fileID: 8626479119140862404, guid: 386cef83d6a94df4791f1c0d98743ded,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.000008583069
+      value: -0.000009059906
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626479119140862404, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8626479119441667916, guid: 386cef83d6a94df4791f1c0d98743ded,
         type: 3}
@@ -938,7 +953,12 @@ PrefabInstance:
     - target: {fileID: 8626479119776091597, guid: 386cef83d6a94df4791f1c0d98743ded,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.506918
+      value: 12.506922
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626479119776091597, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 386cef83d6a94df4791f1c0d98743ded, type: 3}
@@ -1058,6 +1078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: shipManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654330048391161938, guid: b5373b4fb8f3a304080ea54aa0998e96,
+        type: 3}
+      propertyPath: healthUiFollow
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5654330048391161941, guid: b5373b4fb8f3a304080ea54aa0998e96,
         type: 3}
