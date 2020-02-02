@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
@@ -16,7 +17,16 @@ public class CollisionComponent : MonoBehaviour
         _manager.OnShipStartMovement.AddListener(FindObstacles);
         _manager.OnShipFinishMovement.AddListener(SliceObstacles);
     }
-    
+
+    // private void OnCollisionEnter(Collision other)
+    // {
+    //     Debug.LogWarning(other.collider.name);
+    //     if (other.collider.GetComponent<Asteroid>()?.Type == AsteroidType.UnbreakableAsteroid) {
+    //         _manager.health.DestroyShip();
+    //         _manager.OnShipFinishMovement.RemoveListener(SliceObstacles);
+    //     }
+    // }
+
     private void FindObstacles()
     {
         startPosition = _manager.transform.position;

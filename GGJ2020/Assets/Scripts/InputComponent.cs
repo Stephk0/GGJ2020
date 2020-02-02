@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using DG.Tweening;
 using UnityEngine;
 
 public class InputComponent : MonoBehaviour
@@ -14,6 +15,7 @@ public class InputComponent : MonoBehaviour
             {
                 Vector3 InputPosition = Input.mousePosition;
                 _clickDirection = ComputeClickDirection(InputPosition);
+                _camera.DOShakePosition(0.2f, 0.5f, 6);
             }
             else
             {
