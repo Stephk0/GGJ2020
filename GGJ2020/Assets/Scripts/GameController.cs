@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +19,9 @@ public class GameController : MonoBehaviour
     [Space(10)] private AsteroidLevelProfile _activeLevelProfile;
     private bool _haveWon;
     private float _healthBarIncrement;
+    public float delayBeforeEndScreen = 2;
 
+    private Coroutine endScreenCoroutine = null;
 
     // Start is called before the first frame update
     void Start()
@@ -100,22 +100,47 @@ public class GameController : MonoBehaviour
 
     private void LevelWin()
     {
-        Debug.Log("LevelWin(Difficulty:" + DifficultyController.difficulty);
-        DifficultyController.difficulty += 1;
-        winScreen.SetActive(true);
-        winText.text = "-- sector " + (DifficultyController.difficulty) + " clear --";
+        if (endScreenCoroutine == null)
+        {
+            endScreenCoroutine = StartCoroutine(DelayEndScreen(winText, winScreen,
+                "-- sector " + (DifficultyController.difficulty) + " clear --"));
+        }
     }
 
     private void LevelLoss()
     {
-        Debug.Log("LevelLoss()");
-        loseScreen.SetActive(true);
-        loseText.text = "-- se.ctor " + (DifficultyController.difficulty) + " E/RRO;R --";
+        if (endScreenCoroutine == null)
+        {
+            endScreenCoroutine = StartCoroutine(DelayEndScreen(loseText, loseScreen,
+                "-- se.ctor " + (DifficultyController.difficulty) + " E/RRO;R --)", true));
+        }
+    }
+
+    IEnumerator DelayEndScreen(Text text, GameObject Screen, string textstring, bool hasExplosion = false)
+    {
+        if (hasExplosion) shipManager.FX.ShowExplosion();
+        PrepareEndScreen(text, Screen, textstring);
+        yield return new WaitForSeconds(2f);
+        Screen.SetActive(false);
+    }
+
+    public void PrepareEndScreen(Text text, GameObject Screen, string textstring)
+    {
+        Screen.SetActive(true);
+        text.text = textstring;
     }
 
     private void AlignHealthBarToShip()
     {
         var healthPos = Camera.main.WorldToScreenPoint(shipManager.health.uiHealthAnchor.position);
         healthBar.rectTransform.position = healthPos;
+    }
+
+    public void OnDisable()
+    {
+        if (endScreenCoroutine != null)
+        {
+            StopCoroutine(endScreenCoroutine);
+        }
     }
 }

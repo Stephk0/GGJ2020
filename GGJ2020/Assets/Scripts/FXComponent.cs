@@ -12,12 +12,14 @@ public class FXComponent : MonoBehaviour
     public ParticleSystem sucktionParticle;
     public ParticleSystem leftoverParticle;
 
+    public ParticleSystem FXExplosion;
 
     private void Start()
     {
         //_ship.OnStartMovement.AddListener(DrawLine);
         //_ship.OnShipMoving.AddListener(UpdateLine);
         _ship.OnShipStartMovement.AddListener(StartParticle);
+        FXExplosion.Stop();
     }
 
     public void DrawLine()
@@ -38,12 +40,10 @@ public class FXComponent : MonoBehaviour
 
     public List<Vector3> GetLinePositions()
     {
-        
         List<Vector3> positions = new List<Vector3>();
         positions.Add(this.transform.position);
         //positions.Add(this.transform.position + _ship.GetMovementDisplacementVector() * (1 - _ship.GetActionDistance()()));
         return positions;
-        
     }
 
 
@@ -53,5 +53,11 @@ public class FXComponent : MonoBehaviour
         //emissionModule.enabled = true;
         sucktionParticle.Play(true);
         leftoverParticle.Play(true);
+    }
+
+    public void ShowExplosion()
+    {
+        FXExplosion.transform.position = this.transform.position;
+        FXExplosion.Play(true);
     }
 }
