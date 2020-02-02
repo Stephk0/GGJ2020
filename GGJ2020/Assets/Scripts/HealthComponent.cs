@@ -52,6 +52,7 @@ public class HealthComponent : MonoBehaviour
 
     public void DestroyShip()
     {
+        health = 0;
         IsDestroyed?.Invoke();
         Debug.Log("Ship Destroyed");
     }

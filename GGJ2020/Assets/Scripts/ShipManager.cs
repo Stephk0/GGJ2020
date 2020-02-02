@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 public class ShipManager : MonoBehaviour
 {
     [SerializeField] private InputComponent _input;
     [SerializeField] private MovementComponent _movement;
-    [SerializeField] private SlicingComponent _slicer;
     [SerializeField] private float _actionDistance;
     public HealthComponent health;
     public MaterialCollector collector;
@@ -38,8 +33,7 @@ public class ShipManager : MonoBehaviour
     {
         return _movement.GetTotalDisplacementVector(_input.GetClickDirection().ToXZPlane());
     }
-
-
+    
     public float GetActionDistance()
     {
         return _actionDistance;
