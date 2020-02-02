@@ -51,7 +51,7 @@ public class DirectionIndicators : MonoBehaviour
             case PlacingMode.OnActionEndPoint:
                 directionIndicator.transform.position = _shipManager.transform.position - dir.normalized * _shipManager.GetActionDistance();
                 rotDir = _shipManager.transform.position -  directionIndicator.transform.position ;
-                Debug.Log( _shipManager.GetActionDistance());
+               
                 break;
         }
         
