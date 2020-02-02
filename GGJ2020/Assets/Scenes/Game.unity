@@ -756,7 +756,7 @@ PrefabInstance:
     - target: {fileID: 1974300215046103166, guid: 81ff792e9bfc7f2439d1ce3cdbd37ef1,
         type: 3}
       propertyPath: edgeBufferRange
-      value: 2.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1974300215046103166, guid: 81ff792e9bfc7f2439d1ce3cdbd37ef1,
         type: 3}
