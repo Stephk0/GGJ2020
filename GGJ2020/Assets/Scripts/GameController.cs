@@ -10,7 +10,9 @@ public class GameController : MonoBehaviour
     public Image timeBar;
     public Text wrenchCount;
     public GameObject winScreen;
+    public Text winText;
     public GameObject loseScreen;
+    public Text loseText;
     public ShipManager shipManager;
     public MaterialResourcePlacer resourcePlacer;
     public AsteroidLevelProfile[] levelProfiles;
@@ -102,12 +104,14 @@ public class GameController : MonoBehaviour
         Debug.Log("LevelWin(Difficulty:" + DifficultyController.difficulty);
         DifficultyController.difficulty += 1;
         winScreen.SetActive(true);
+        winText.text = "-- sector " + (DifficultyController.difficulty) + " clear --";
     }
 
     private void LevelLoss()
     {
         Debug.Log("LevelLoss()");
         loseScreen.SetActive(true);
+        loseText.text = "-- se.ctor " + (DifficultyController.difficulty) + " E/RRO;R --";
     }
     
     private void AlignHealthBarToShip()
