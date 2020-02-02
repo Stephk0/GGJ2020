@@ -12,6 +12,7 @@ public class ShipManager : MonoBehaviour
     [SerializeField] private SlicingComponent _slicer;
     [SerializeField] private float _actionDistance;
     public HealthComponent health;
+    public MaterialCollector collector;
 
     public UnityEvent OnShipStartMovement;
     public UnityEvent OnShipFinishMovement;
@@ -19,6 +20,15 @@ public class ShipManager : MonoBehaviour
 
     public float BuildUpThreshHold = 0.13f;
 
+    public void Init()
+    {
+        if (health == null)
+            health = GetComponentInChildren<HealthComponent>();
+
+        if (collector == null)
+            collector = GetComponentInChildren<MaterialCollector>();
+    }
+    
     public Vector3 GetMovementDirection()
     {
         return _input.GetClickDirection().ToXZPlane();

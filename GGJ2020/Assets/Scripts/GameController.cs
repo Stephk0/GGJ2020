@@ -27,7 +27,11 @@ public class GameController : MonoBehaviour
 
     private void Init()
     {
-        _activeLevelProfile = levelProfiles[DifficultyController.difficulty];
+        var difficulty = DifficultyController.difficulty;
+        if (difficulty >= levelProfiles.Length)
+            difficulty = levelProfiles.Length - 1;
+        
+        _activeLevelProfile = levelProfiles[difficulty];
         
         resourcePlacer = FindObjectOfType<MaterialResourcePlacer>();
         shipManager = FindObjectOfType<ShipManager>();
