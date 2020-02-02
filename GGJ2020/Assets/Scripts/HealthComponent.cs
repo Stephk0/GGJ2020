@@ -13,6 +13,9 @@ public class HealthComponent : MonoBehaviour
     public Action DecreasingHealth;
     public Action IsDestroyed;
 
+    [FormerlySerializedAs("UiHealthReference")] [Space(10)] 
+    public Transform uiHealthAnchor;
+
     private float currentTime;
 
     void Update()

@@ -13,6 +13,10 @@ public class GameController : MonoBehaviour
     public MaterialResourcePlacer resourcePlacer;
     public AsteroidLevelProfile[] levelProfiles;
 
+    [Space(10)] 
+    public bool healthUiFollow = true;
+    [Space(10)]
+    
     private AsteroidLevelProfile _activeLevelProfile;
     private bool _haveWon;
     private float _healthBarIncrement;
@@ -45,12 +49,18 @@ public class GameController : MonoBehaviour
         shipManager.health.IsDestroyed += LevelLoss;
         shipManager.health.DecreasingHealth += UpdateHealthBar;
         UpdateHealthBar();
+
+        if(healthUiFollow)
+            healthBar.rectTransform.localScale = Vector3.one * 0.2f;
         
         resourcePlacer.SetupMaterialResources(_activeLevelProfile);
     }
 
     void Update()
     {
+        if(healthUiFollow)
+            AlignHealthBarToShip();
+
         if (DifficultyController.collectedMaterials < DifficultyController.winValue)
             return;
         
@@ -58,9 +68,21 @@ public class GameController : MonoBehaviour
         LevelWin();
     }
 
+    private void AlignHealthBarToShip()
+    {
+        var healthPos = Camera.main.WorldToScreenPoint(shipManager.health.uiHealthAnchor.position);
+        healthBar.rectTransform.position = healthPos;
+    }
+
     private void UpdateHealthBar()
     {
-        healthBar.fillAmount = shipManager.health.health * _healthBarIncrement;
+        var amount = shipManager.health.health * _healthBarIncrement;
+
+        if (amount <= 0.25f){
+            healthBar.color = Color.red;
+        }
+        
+        healthBar.fillAmount = amount;
     }
 
     private void LevelWin()

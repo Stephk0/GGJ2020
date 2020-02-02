@@ -19261,7 +19261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2462646573397554900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.28, y: 0, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7125659980598802030}
@@ -19270,6 +19270,7 @@ Transform:
   - {fileID: 1800901145}
   - {fileID: 1555632755}
   - {fileID: 919045789}
+  - {fileID: 2204129739991370517}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19300,9 +19301,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _input: {fileID: 2462646573397554907}
   _movement: {fileID: 2462646573397554910}
-  _slicer: {fileID: 2462646573397554882}
   _actionDistance: 10
   health: {fileID: 831914518}
+  collector: {fileID: 0}
   OnShipStartMovement:
     m_PersistentCalls:
       m_Calls: []
@@ -19484,9 +19485,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  healthDecrease: 4
+  healthDecreaseAmount: 4
   timeToDecrease: 0.5
   decreaseHealth: 1
+  UiHealthReference: {fileID: 2204129739991370517}
 --- !u!1 &3231109912423511987
 GameObject:
   m_ObjectHideFlags: 0
@@ -19625,3 +19627,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _manager: {fileID: 2462646573397554909}
   _materialCollectorCollider: {fileID: 3688398081500426049}
+--- !u!1 &6630926372158428622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2204129739991370517}
+  m_Layer: 8
+  m_Name: UiHealthbarAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2204129739991370517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6630926372158428622}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.881, y: 0, z: -0.724}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2462646573397554911}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
