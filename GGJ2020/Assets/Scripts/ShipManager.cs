@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 public class ShipManager : MonoBehaviour
 {
     [SerializeField] private InputComponent _input;
     [SerializeField] private MovementComponent _movement;
-    [SerializeField] private SlicingComponent _slicer;
     [SerializeField] private float _actionDistance;
     public HealthComponent health;
+    public MaterialCollector collector;
 
     public UnityEvent OnShipStartMovement;
     public UnityEvent OnShipFinishMovement;
@@ -21,11 +15,15 @@ public class ShipManager : MonoBehaviour
 
     public float BuildUpThreshHold = 0.13f;
 
-    private void Start()
+    public void Init()
     {
-        OnShipStartMovement.AddListener(Shake);
-    }
+        if (health == null)
+            health = GetComponentInChildren<HealthComponent>();
 
+        if (collector == null)
+            collector = GetComponentInChildren<MaterialCollector>();
+    }
+    
     public Vector3 GetMovementDirection()
     {
         return _input.GetClickDirection().ToXZPlane();
@@ -44,11 +42,6 @@ public class ShipManager : MonoBehaviour
     public bool IsShipInBuildUp()
     {
         return _movement.MovementPhases == ShipMovementPhases.BuildUp;
-    }
-    
-    private void Shake()
-    {
-        Camera.main.DOShakePosition(0.2f, 0.7f);
     }
 }
 

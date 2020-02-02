@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-enum AsteroidType
+public enum AsteroidType
 {
     DestroyableAsteroid, UnbreakableAsteroid
 }
@@ -24,6 +24,8 @@ public class Asteroid : MonoBehaviour, ISliceable
         get => _amount;
         set => _amount = value;
     }
+
+    public AsteroidType Type => type;
 
     private int _amount;
     private bool isSliced;

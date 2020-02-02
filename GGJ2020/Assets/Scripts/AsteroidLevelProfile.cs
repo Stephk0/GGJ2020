@@ -13,6 +13,10 @@ public class AsteroidLevelProfile : ScriptableObject
     
     public int volume;
     public int victoryCount;
+
+    public int initialHealth = 100;
+    public int healthDecreasePerTick = 1;
+    public float healthDecreaseTickTime = 1f;
     
     public Asteroid[] asteroidTypes;
     public float[] objWeighting;

@@ -3,7 +3,7 @@ using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
 
-public class SlicingComponent : MonoBehaviour
+public class CollisionComponent : MonoBehaviour
 {
     [SerializeField] private ShipManager _manager;
     [SerializeField] private bool _debug;
@@ -44,11 +44,17 @@ public class SlicingComponent : MonoBehaviour
     private void SliceObstacles()
     {
         foreach (var hit in hits) {
-            ISliceable sliceable = hit.collider.gameObject.GetComponent<ISliceable>();
-            if (sliceable != null) {
-                sliceable.OnSliced(startPosition, hit.point);
+            Asteroid asteroid = hit.collider.gameObject.GetComponent<Asteroid>();
+            if (asteroid != null) {
+                if (asteroid.Type == AsteroidType.DestroyableAsteroid) {
+                    asteroid.OnSliced(startPosition, hit.point);
+                }
+                else if(asteroid.Type == AsteroidType.UnbreakableAsteroid){
+                    _manager.health.DestroyShip();
+                    return;
+                }
             }
-
+            
             if (_debug) {
                 Debug.Log("hit " + hit.point + " name " + hit.collider.name);
             }
