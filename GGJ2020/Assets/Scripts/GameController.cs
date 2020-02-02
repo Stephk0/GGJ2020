@@ -120,9 +120,9 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("DelayEndScreen");
         if (hasExplosion) shipManager.FX.ShowExplosion();
+        shipManager.Stop();
         yield return new WaitForSeconds(2f);
         PrepareEndScreen(text, Screen, textstring);
-        //Screen.SetActive(false);
     }
 
     public void PrepareEndScreen(Text text, GameObject Screen, string textstring)

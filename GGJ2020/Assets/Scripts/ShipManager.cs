@@ -17,6 +17,12 @@ public class ShipManager : MonoBehaviour
     public float BuildUpThreshHold = 0.13f;
 
 
+    public void Stop()
+    {
+        _input.enabled = false;
+        _movement.enabled = false;
+    }
+
     public Vector3 GetMovementDirection()
     {
         return _input.GetClickDirection().ToXZPlane();

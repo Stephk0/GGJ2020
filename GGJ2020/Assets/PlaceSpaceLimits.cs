@@ -33,10 +33,10 @@ public class PlaceSpaceLimits : MonoBehaviour
         _planes[2].transform.rotation = Quaternion.Euler(90, 90, 0);
         _planes[3].transform.rotation = Quaternion.Euler(90, 0, 0);
 
-        _planes[0].transform.localScale = new Vector3(100, 2, 14);
-        _planes[1].transform.localScale = new Vector3(100, 2, 14);
-        _planes[2].transform.localScale = new Vector3(100, 2, 14);
-        _planes[3].transform.localScale = new Vector3(100, 2, 14);
+        _planes[0].transform.localScale = new Vector3(100, 1, 14);
+        _planes[1].transform.localScale = new Vector3(100, 1, 14);
+        _planes[2].transform.localScale = new Vector3(100, 1, 14);
+        _planes[3].transform.localScale = new Vector3(100, 1, 14);
     }
 
     public void Start()
