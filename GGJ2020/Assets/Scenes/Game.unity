@@ -176,7 +176,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 15
   orthographic: 0
   orthographic size: 20
   m_Depth: -1
@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256600681}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 30, z: 0}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -432,7 +432,7 @@ PrefabInstance:
     - target: {fileID: 2462646573397554909, guid: 745a1b66cfdb74e0688da54d813e152d,
         type: 3}
       propertyPath: _actionDistance
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2462646573397554910, guid: 745a1b66cfdb74e0688da54d813e152d,
         type: 3}
@@ -442,7 +442,7 @@ PrefabInstance:
     - target: {fileID: 2462646573397554910, guid: 745a1b66cfdb74e0688da54d813e152d,
         type: 3}
       propertyPath: _phasesData.Array.data[1].travelDistance
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2462646573397554910, guid: 745a1b66cfdb74e0688da54d813e152d,
         type: 3}
@@ -997,10 +997,30 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8626479118165662502, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626479118165662502, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8626479118709925656, guid: 386cef83d6a94df4791f1c0d98743ded,
         type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626479118709925656, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626479118709925656, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8626479118709925659, guid: 386cef83d6a94df4791f1c0d98743ded,
         type: 3}
@@ -1026,6 +1046,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626479119140862409, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626479119140862409, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8626479119441667916, guid: 386cef83d6a94df4791f1c0d98743ded,
         type: 3}
@@ -1101,6 +1131,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626479119776091602, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626479119776091602, guid: 386cef83d6a94df4791f1c0d98743ded,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 386cef83d6a94df4791f1c0d98743ded, type: 3}
