@@ -118,10 +118,11 @@ public class GameController : MonoBehaviour
 
     IEnumerator DelayEndScreen(Text text, GameObject Screen, string textstring, bool hasExplosion = false)
     {
+        Debug.Log("DelayEndScreen");
         if (hasExplosion) shipManager.FX.ShowExplosion();
-        PrepareEndScreen(text, Screen, textstring);
         yield return new WaitForSeconds(2f);
-        Screen.SetActive(false);
+        PrepareEndScreen(text, Screen, textstring);
+        //Screen.SetActive(false);
     }
 
     public void PrepareEndScreen(Text text, GameObject Screen, string textstring)

@@ -797,24 +797,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6ad171372baee34e94c6b00af195ea0, type: 3}
---- !u!1 &1311342318 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5654330049701512590, guid: b5373b4fb8f3a304080ea54aa0998e96,
-    type: 3}
-  m_PrefabInstance: {fileID: 5654330048952535996}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &1311342323
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311342318}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &1343295775
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,6 +827,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!114 &1343295777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,6 +846,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
 --- !u!4 &1343295778
 Transform:
   m_ObjectHideFlags: 0
@@ -963,24 +955,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1560257344 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5654330049821394717, guid: b5373b4fb8f3a304080ea54aa0998e96,
-    type: 3}
-  m_PrefabInstance: {fileID: 5654330048952535996}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &1560257349
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560257344}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!114 &1605747365 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2462646573397554909, guid: 745a1b66cfdb74e0688da54d813e152d,
@@ -1218,16 +1192,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 5654330049701512590, guid: b5373b4fb8f3a304080ea54aa0998e96,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5654330049821394717, guid: b5373b4fb8f3a304080ea54aa0998e96,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5373b4fb8f3a304080ea54aa0998e96, type: 3}

@@ -362,6 +362,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df0d62b4a8867411fa625a05f419ba5e, type: 2}
   - {fileID: 11400000, guid: 76281731a31fb47e7aa1482b01d7fad2, type: 2}
   healthUiFollow: 0
+  delayBeforeEndScreen: 2
 --- !u!1 &5654330048591058481
 GameObject:
   m_ObjectHideFlags: 0
