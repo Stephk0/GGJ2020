@@ -67,7 +67,6 @@ public class GameController : MonoBehaviour
         UpdateWrenchCount();
         
         if (DifficultyController.collectedMaterials >= DifficultyController.winValue){
-            DifficultyController.difficulty += 1;
             LevelWin();
         }
     }
@@ -96,6 +95,8 @@ public class GameController : MonoBehaviour
 
     private void LevelWin()
     {
+        Debug.Log("LevelWin(Difficulty:" + DifficultyController.difficulty);
+        DifficultyController.difficulty += 1;
         winScreen.SetActive(true);
     }
 

@@ -56,7 +56,7 @@ public class MaterialResourcePlacer : MonoBehaviour
             corner.y = 0f;
             worldCorners[i] = corner;
             
-            Debug.Log($"Corner {i} position: {worldCorners[i]}");
+            //Debug.Log($"Corner {i} position: {worldCorners[i]}");
             Debug.DrawRay(worldCorners[i], Vector3.up * 10f, Color.white, 5f);
         }
 
