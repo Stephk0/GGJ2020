@@ -100,6 +100,8 @@ public class GameController : MonoBehaviour
 
     private void LevelWin()
     {
+        DifficultyController.difficulty += 1;
+        
         if (endScreenCoroutine == null)
         {
             endScreenCoroutine = StartCoroutine(DelayEndScreen(winText, winScreen,
