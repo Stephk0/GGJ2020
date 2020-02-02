@@ -1,16 +1,10 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class InputComponent : MonoBehaviour
 {
+    [SerializeField] private Camera _camera;
     private Vector2 _clickDirection;
-    private Camera _camera;
-
-    private void Start()
-    {
-        _camera = Camera.main;
-    }
 
     private void Update()
     {

@@ -8,7 +8,6 @@ public class MaterialResourcePlacer : MonoBehaviour
 //    public AsteroidLevelProfile[] levelProfiles;
     public Vector3[] WorldCorners => _worldCorners;
     public List<Asteroid> generatedAsteroids;
-    public float edgeBufferRange = 5f;
     
     private float _depth;
     private Vector3[] _screenCorners;
@@ -42,7 +41,7 @@ public class MaterialResourcePlacer : MonoBehaviour
     
     public Vector3[] GetWorldBounds()
     {
-        _depth = Camera.main.transform.position.y - edgeBufferRange;
+        _depth = Camera.main.transform.position.y;
             
         _screenCorners = new [] {new Vector3(0, 0, _depth), //bottom left
                             new Vector3(0, 1, _depth), //top lef
