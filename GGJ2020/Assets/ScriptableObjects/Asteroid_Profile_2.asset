@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 2
   level: 2
-  volume: 6
+  volume: 5
   victoryCount: 5
-  initialHealth: 115
+  initialHealth: 86
   healthDecreasePerTick: 6
   healthDecreaseTickTime: 1
   asteroidTypes:

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 1
   level: 1
-  volume: 5
+  volume: 4
   victoryCount: 4
-  initialHealth: 100
+  initialHealth: 75
   healthDecreasePerTick: 5
   healthDecreaseTickTime: 1
   asteroidTypes:
@@ -24,4 +24,4 @@ MonoBehaviour:
   - {fileID: 1893274326644299939, guid: 051c08e12e3344cb1a359c4e4d89c7b7, type: 3}
   objWeighting:
   - 4
-  - 0
+  - 1

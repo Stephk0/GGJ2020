@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 5
   level: 5
-  volume: 7
-  victoryCount: 8
-  initialHealth: 175
-  healthDecreasePerTick: 12
+  volume: 8
+  victoryCount: 11
+  initialHealth: 131
+  healthDecreasePerTick: 10
   healthDecreaseTickTime: 1
   asteroidTypes:
   - {fileID: 1893274326644299939, guid: 4e2a6a25c9570417684ec311659fb740, type: 3}
   - {fileID: 1893274326644299939, guid: 051c08e12e3344cb1a359c4e4d89c7b7, type: 3}
   objWeighting:
-  - 4
-  - 1
+  - 6
+  - 2

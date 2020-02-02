@@ -15,13 +15,13 @@ MonoBehaviour:
   name: 3
   level: 3
   volume: 6
-  victoryCount: 5
-  initialHealth: 132
-  healthDecreasePerTick: 8
+  victoryCount: 7
+  initialHealth: 99
+  healthDecreasePerTick: 7
   healthDecreaseTickTime: 1
   asteroidTypes:
   - {fileID: 1893274326644299939, guid: 4e2a6a25c9570417684ec311659fb740, type: 3}
   - {fileID: 1893274326644299939, guid: 051c08e12e3344cb1a359c4e4d89c7b7, type: 3}
   objWeighting:
-  - 4
+  - 5
   - 1
