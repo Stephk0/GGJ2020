@@ -15,7 +15,7 @@ MonoBehaviour:
   name: 2
   level: 2
   volume: 6
-  victoryCount: 4
+  victoryCount: 5
   initialHealth: 115
   healthDecreasePerTick: 6
   healthDecreaseTickTime: 1
