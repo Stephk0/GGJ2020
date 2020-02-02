@@ -2720,6 +2720,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3320323ab877e4abb8e60fcdf8781df5,
         type: 2}
+    - target: {fileID: 1974300215046103166, guid: 81ff792e9bfc7f2439d1ce3cdbd37ef1,
+        type: 3}
+      propertyPath: edgeBufferRange
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1974300215046103167, guid: 81ff792e9bfc7f2439d1ce3cdbd37ef1,
         type: 3}
       propertyPath: m_Name

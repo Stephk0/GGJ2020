@@ -5,18 +5,23 @@ using UnityEngine.Serialization;
 
 public class HealthComponent : MonoBehaviour
 {
-    public int health = 100;
+    public int health;
     public int healthDecreaseAmount = 4;
     public float timeToDecrease = 0.5f;
     public bool decreaseHealth = true;
 
-    public Action DecreasingHealth;
+    [FormerlySerializedAs("DecreasingHealth")] public Action ApplyingHealth;
     public Action IsDestroyed;
 
     [FormerlySerializedAs("UiHealthReference")] [Space(10)] 
     public Transform uiHealthAnchor;
 
-    private float currentTime;
+    public float currentTime;
+    public int maxHealth;
+    private void Start()
+    {
+        maxHealth = health;
+    }
 
     void Update()
     {
@@ -28,9 +33,10 @@ public class HealthComponent : MonoBehaviour
     public void Apply(int amount)
     {
         //Can be negative or Positive amount
-        
         health -= amount;
-        DecreasingHealth?.Invoke();
+        if (health > maxHealth)
+            health = maxHealth;
+        ApplyingHealth?.Invoke();
         
         if(IsDeathReady())
             DestroyShip();

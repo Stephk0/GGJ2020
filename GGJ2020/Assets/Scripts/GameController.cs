@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public Image healthBar;
+    public Image timeBar;
+    public Text wrenchCount;
     public GameObject winScreen;
     public GameObject loseScreen;
     public ShipManager shipManager;
@@ -47,7 +49,7 @@ public class GameController : MonoBehaviour
         shipManager.health.timeToDecrease = _activeLevelProfile.healthDecreaseTickTime;
         
         shipManager.health.IsDestroyed += LevelLoss;
-        shipManager.health.DecreasingHealth += UpdateHealthBar;
+        shipManager.health.ApplyingHealth += UpdateHealthBar;
         UpdateHealthBar();
 
         if(healthUiFollow)
@@ -61,28 +63,35 @@ public class GameController : MonoBehaviour
         if(healthUiFollow)
             AlignHealthBarToShip();
 
-        if (DifficultyController.collectedMaterials < DifficultyController.winValue)
-            return;
+        UpdateTimeBar();
+        UpdateWrenchCount();
         
-        DifficultyController.difficulty += 1;
-        LevelWin();
-    }
-
-    private void AlignHealthBarToShip()
-    {
-        var healthPos = Camera.main.WorldToScreenPoint(shipManager.health.uiHealthAnchor.position);
-        healthBar.rectTransform.position = healthPos;
+        if (DifficultyController.collectedMaterials >= DifficultyController.winValue){
+            DifficultyController.difficulty += 1;
+            LevelWin();
+        }
     }
 
     private void UpdateHealthBar()
     {
         var amount = shipManager.health.health * _healthBarIncrement;
-
+        healthBar.fillAmount = amount;
+        
         if (amount <= 0.25f){
             healthBar.color = Color.red;
         }
-        
-        healthBar.fillAmount = amount;
+    }
+
+    private void UpdateTimeBar()
+    {
+        var amount = 1f - shipManager.health.currentTime;
+        timeBar.fillAmount = amount;
+    }
+    
+    private void UpdateWrenchCount()
+    {
+        wrenchCount.text = DifficultyController.collectedMaterials.ToString() + "/" +
+                           DifficultyController.winValue.ToString();
     }
 
     private void LevelWin()
@@ -94,5 +103,10 @@ public class GameController : MonoBehaviour
     {
         loseScreen.SetActive(true);
     }
-
+    
+    private void AlignHealthBarToShip()
+    {
+        var healthPos = Camera.main.WorldToScreenPoint(shipManager.health.uiHealthAnchor.position);
+        healthBar.rectTransform.position = healthPos;
+    }
 }
