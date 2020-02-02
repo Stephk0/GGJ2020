@@ -81,5 +81,5 @@ Material:
     - _CloudScaleScroll: {r: 16, g: 16, b: 2, a: 2}
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _LightColor: {r: 0, g: 1, b: 0.83529425, a: 1}
+    - _LightColor: {r: 0.4669811, g: 1, b: 0.91220874, a: 1}
     - _LightDirection: {r: -1, g: -0.18, b: 0.89, a: 0}

@@ -10,6 +10,7 @@ public class LoadScreen : MonoBehaviour
     void Start()
     {
         DifficultyController.collectedMaterials = 0;
+        Debug.Log("LoadGame: Difficulty " + DifficultyController.difficulty);
         SceneManager.LoadScene("Game");
     }
 }

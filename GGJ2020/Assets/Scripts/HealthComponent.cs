@@ -1,31 +1,44 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HealthComponent : MonoBehaviour
 {
-    public int health = 100;
-    public int healthDecrease = 4;
+    public int health;
+    public int healthDecreaseAmount = 4;
     public float timeToDecrease = 0.5f;
     public bool decreaseHealth = true;
+
+    [FormerlySerializedAs("DecreasingHealth")] public Action ApplyingHealth;
     public Action IsDestroyed;
 
-    private float currentTime;
+    [FormerlySerializedAs("UiHealthReference")] [Space(10)] 
+    public Transform uiHealthAnchor;
+
+    public float currentTime;
+    public int maxHealth;
+    private void Start()
+    {
+        maxHealth = health;
+    }
 
     void Update()
     {
-        if (decreaseHealth)
-        {
+        if (decreaseHealth){
             Timers();
         }
     }
-
-    public void Decrease(int amount)
+    
+    public void Apply(int amount)
     {
+        //Can be negative or Positive amount
         health -= amount;
-
-        if (IsDeathReady())
+        if (health > maxHealth)
+            health = maxHealth;
+        ApplyingHealth?.Invoke();
+        
+        if(IsDeathReady())
             DestroyShip();
     }
 
@@ -33,11 +46,11 @@ public class HealthComponent : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
-        if (!(currentTime > timeToDecrease))
+        if (!(currentTime > timeToDecrease)) 
             return;
-
+        
         currentTime = 0f;
-        Decrease(healthDecrease);
+        Apply(healthDecreaseAmount);
     }
 
 
@@ -46,9 +59,10 @@ public class HealthComponent : MonoBehaviour
         return health <= 0;
     }
 
-    private void DestroyShip()
+    public void DestroyShip()
     {
+        health = 0;
         IsDestroyed?.Invoke();
-        //Debug.Log("Ship Destroyed");
+        Debug.Log("Ship Destroyed");
     }
 }

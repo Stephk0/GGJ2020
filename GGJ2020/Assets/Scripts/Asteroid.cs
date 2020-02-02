@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-enum AsteroidType
+public enum AsteroidType
 {
     DestroyableAsteroid, UnbreakableAsteroid
 }
@@ -25,6 +25,8 @@ public class Asteroid : MonoBehaviour, ISliceable
         set => _amount = value;
     }
 
+    public AsteroidType Type => type;
+
     private int _amount;
     private bool isSliced;
 
@@ -46,19 +48,42 @@ public class Asteroid : MonoBehaviour, ISliceable
         SpawnMaterials(hitPosition, direction);
     }
 
-    private void AddForceToPiece(Rigidbody piece, Vector3 direction, Vector3 hitPosition)
-    {
-        Debug.DrawLine(hitPosition, hitPosition + direction, Color.magenta, 2f);
-        piece.isKinematic = false;
-        piece.AddForce(direction * _force, ForceMode.Impulse);
-    }
+//    private void AddForceToPiece(Rigidbody piece, Vector3 direction, Vector3 hitPosition)
+//    {
+//        Debug.DrawLine(hitPosition, hitPosition + direction, Color.magenta, 2f);
+//        piece.isKinematic = false;
+//        piece.AddForce(direction * _force, ForceMode.Impulse);
+//    }
 
+    
     private void SpawnMaterials(Vector3 position, Vector3 direction)
     {
         for (int i = 0; i < Amount; i++) {
             var resourceRB = Instantiate(resourcePrefab, position, Quaternion.identity).GetComponent<Rigidbody>();
             var rotation = Quaternion.Euler(0, Random.Range(-angle, angle), 0);
             resourceRB.AddForce((rotation * direction) * _force, ForceMode.Impulse);
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        ExecuteDestruction(other);
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        ExecuteDestruction(other);
+    }
+
+    private void ExecuteDestruction(Collision other)
+    {
+        var player = other.gameObject.GetComponentInChildren<ShipManager>();
+        if (player)
+        {
+            OnSlice.Invoke();
+            isSliced = true;
+            Vector3 direction = other.transform.position - other.transform.position * 1.05f;
+            direction.Normalize();
         }
     }
 }

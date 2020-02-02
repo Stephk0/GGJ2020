@@ -14,7 +14,7 @@ public class PlaceSpaceLimits : MonoBehaviour
         float h = Screen.height;
         Bounds b = new Bounds(new Vector3(w * 0.5f, h * 0.5f, w), new Vector3(w, h, w));
 
-        Vector3[] bounds = _cam.GetWorldBounds();
+        Vector3[] bounds = _cam.GetWorldBounds(5f);
 
         float depth = Mathf.Abs(bounds[0].z - bounds[1].z);
         float Width = Mathf.Abs(bounds[1].x - bounds[2].x);
@@ -79,5 +79,35 @@ public class PlaceSpaceLimits : MonoBehaviour
         point.x = Mathf.Clamp(point.x, Min.x + radius, Max.x - radius);
         point.z = Mathf.Clamp(point.z, Min.z + radius, Max.z - radius);
         return point;
+    }
+}
+
+public static class CameraExtensions
+{
+    public static Vector3[] GetWorldBounds(this Camera cam, float edgeBufferRange)
+    {
+        float _depth = cam.transform.position.y - edgeBufferRange;
+
+        var _screenCorners = new[]
+        {
+            new Vector3(0, 0, _depth), //bottom left
+            new Vector3(0, 1, _depth), //top lef
+            new Vector3(1, 1, _depth), //top right
+            new Vector3(1, 0, _depth)
+        }; //bottom right;
+
+        var worldCorners = new Vector3[_screenCorners.Length];
+
+        for (var i = 0; i < _screenCorners.Length; i++)
+        {
+            var corner = Camera.main.ViewportToWorldPoint(_screenCorners[i]);
+            corner.y = 0f;
+            worldCorners[i] = corner;
+
+            //Debug.Log($"Corner {i} position: {worldCorners[i]}");
+            Debug.DrawRay(worldCorners[i], Vector3.up * 10f, Color.white, 5f);
+        }
+
+        return worldCorners;
     }
 }

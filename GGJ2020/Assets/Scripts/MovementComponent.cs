@@ -148,8 +148,6 @@ public class MovementComponent : MonoBehaviour
         for (int i = 0; i < path.Count; i++)
         {
             Vector3 currentTarget = path[i];
-
-
             //Debug.DrawLine(ini, currentTarget, i == 0 ? Color.magenta : i == 1 ? Color.red : Color.cyan, 3);
             ini = currentTarget;
         }
