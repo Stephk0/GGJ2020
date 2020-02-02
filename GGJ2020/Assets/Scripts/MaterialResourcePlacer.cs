@@ -10,11 +10,14 @@ public class MaterialResourcePlacer : MonoBehaviour
     public Vector3[] WorldCorners => _worldCorners;
     public List<Asteroid> generatedAsteroids;
     public float edgeBufferRange = 5f;
+    public ShipManager _shipManager;
+    public float spawnRadius = 3f;
 
     private float _depth;
     private Vector3[] _screenCorners;
     private Vector3[] _worldCorners;
     private int materialPerAsteroid = 2;
+    
 
 //    void Start()
 //    {
@@ -80,11 +83,32 @@ public class MaterialResourcePlacer : MonoBehaviour
 
     private Vector3 RandomSpawnPosition(Vector3[] corners)
     {
-        var posX = Random.Range(corners[0].x, corners[2].x);
-        var posZ = Random.Range(corners[0].z, corners[2].z);
-        return new Vector3(posX, 0f, posZ);
+        Vector3 newPosition = Vector3.zero;
+        do {
+            var posX = Random.Range(corners[0].x, corners[2].x);
+            var posZ = Random.Range(corners[0].z, corners[2].z);
+
+            newPosition = new Vector3(posX, 0f, posZ);
+        } while (!CheckPositionAvailable(newPosition));
+
+        return newPosition;
     }
 
+    private bool CheckPositionAvailable(Vector3 newPosition)
+    {
+        if (Vector3.Distance(_shipManager.transform.position, newPosition) < spawnRadius) {
+            return false;
+        }
+
+        foreach (var asteroid in generatedAsteroids) {
+            if (Vector3.Distance(asteroid.transform.position, newPosition) < spawnRadius) {
+                return false;
+            }    
+        }
+
+        return true;
+    }
+    
     private int[] VolumeWeighted(int volume, float[] weights)
     {
         var remainingVolume = volume;
