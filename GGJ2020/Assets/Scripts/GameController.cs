@@ -27,8 +27,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Level Start: Difficulty" + DifficultyController.difficulty);
         Init();
-        Debug.Log("Game started");
     }
 
     private void Init()
@@ -65,9 +65,13 @@ public class GameController : MonoBehaviour
 
         UpdateTimeBar();
         UpdateWrenchCount();
-        
+
         if (DifficultyController.collectedMaterials >= DifficultyController.winValue){
-            LevelWin();
+            if (_haveWon == false)
+            {
+                _haveWon = true;
+                LevelWin();
+            }
         }
     }
 
@@ -102,6 +106,7 @@ public class GameController : MonoBehaviour
 
     private void LevelLoss()
     {
+        Debug.Log("LevelLoss()");
         loseScreen.SetActive(true);
     }
     
